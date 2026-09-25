@@ -313,11 +313,34 @@ dl.read dd .muted{font-family:var(--body);font-size:.85rem;font-style:italic;let
 .flash .row{justify-content:center}
 
 /* Onglets — le contenu se dissout au-dessus de la barre */
-.tabs{position:fixed;bottom:0;left:0;right:0;z-index:6;display:grid;grid-template-columns:repeat(4,1fr);background:var(--ink);border-top:1px solid var(--rule);padding-bottom:env(safe-area-inset-bottom)}
+.tabs{position:fixed;bottom:0;left:0;right:0;z-index:6;display:grid;grid-template-columns:repeat(5,1fr);background:var(--ink);border-top:1px solid var(--rule);padding-bottom:env(safe-area-inset-bottom)}
 .tabs::before{content:'';position:absolute;top:-26px;left:0;right:0;height:26px;background:linear-gradient(transparent,var(--ink));pointer-events:none}
 .tab{min-width:0;background:none;border:none;padding:9px 1px 10px;color:var(--muted);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:4px;min-height:60px;transition:color var(--t)}
 .tab .k{font-family:var(--jp);font-size:1.15rem;line-height:1;letter-spacing:0;text-transform:none}
 .tab[aria-selected="true"]{color:var(--filament)}
+
+/* Calligraphie */
+.calli-tools{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:16px;align-items:end;margin:20px 0 14px}
+@media (max-width:620px){.calli-tools{grid-template-columns:1fr}}
+.calli-tools .seg{width:100%}
+.feuille-wrap{display:flex;flex-direction:column;gap:8px;align-items:center;margin:4px 0}
+canvas.feuille{display:block;max-width:100%;border:1px solid var(--rule);border-radius:3px;box-shadow:var(--shadow);background:var(--tape-bg);touch-action:none;cursor:crosshair}
+.feuille-wrap .msg{font-size:.9rem;font-style:italic;min-height:1.4em;align-self:flex-start}
+.eight{border-top:1px solid var(--rule);margin-top:6px}
+.eight-row{display:grid;grid-template-columns:auto auto auto minmax(0,1fr);gap:2px 12px;align-items:baseline;padding:11px 4px;border-bottom:1px solid var(--rule)}
+.eight-row .n{font-family:var(--display);font-size:1rem;color:var(--ember);font-variant-numeric:tabular-nums}
+.eight-row .g{font-family:var(--jp);font-size:1.5rem;color:var(--paper);line-height:1}
+.eight-row .r{font-style:italic;color:var(--muted);font-size:.9rem}
+.eight-row .d{font-size:.95rem}
+.eight-row .d b{color:var(--paper);font-weight:600}
+@media (max-width:560px){.eight-row{grid-template-columns:auto auto minmax(0,1fr)}.eight-row .d{grid-column:1 / -1}}
+@media print{
+  .top,.tabs,.no-print,footer.credit,.feuille-wrap .msg{display:none!important}
+  main{padding:0;max-width:none}
+  html,body{background:#fff;color:#000}
+  canvas.feuille{box-shadow:none;border:1px solid #999;width:100%!important;height:auto!important}
+  h1,.eyebrow,p{color:#000}
+}
 
 /* Réglages */
 .sheet-bg{position:fixed;inset:0;background:color-mix(in srgb,var(--ink) 74%,transparent);z-index:20}
@@ -342,8 +365,9 @@ footer.credit a{color:var(--muted)}
 
 <nav class="tabs" role="tablist" id="tabs">
   <button class="tab" role="tab" data-tab="lecons"><span class="k">学</span>Leçons</button>
-  <button class="tab" role="tab" data-tab="katakana"><span class="k">カ</span>Katakana</button>
+  <button class="tab" role="tab" data-tab="kana"><span class="k">あ</span>Kana</button>
   <button class="tab" role="tab" data-tab="kanji"><span class="k">字</span>Kanji</button>
+  <button class="tab" role="tab" data-tab="calli"><span class="k">筆</span>Feuille</button>
   <button class="tab" role="tab" data-tab="dico"><span class="k">辞</span>Dico</button>
 </nav>
 

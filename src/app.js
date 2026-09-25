@@ -132,8 +132,16 @@ document.addEventListener("keydown", e => { if (e.key === "Escape" && sheet.clas
 $("#testVoice").onclick = () => speak("こんにちは。日本語工房へようこそ。");
 
 // ═══ Dictionnaire (données) ═══════════════════════════════════════
-const KANA_ALL = KANA_ROWS.flatMap(r => r.cells.filter(Boolean).map(([k, ro]) => ({ k, r: ro, row: r.id })));
-const KANA_BY_CHAR = Object.fromEntries(KANA_ALL.map(x => [x.k, x]));
+const mkAll = rows => rows.flatMap(r => r.cells.filter(Boolean).map(([k, ro]) => ({ k, r: ro, row: r.id })));
+const SCRIPTS = {
+  hira: { id: "hira", jp: "ひらがな", fr: "Hiragana", rows: HIRA_ROWS, words: HIRA_WORDS, small: ["っ", "ゃ", "ゅ", "ょ"],
+    intro: "L'écriture de base : les mots japonais, les particules et toutes les terminaisons de verbes passent par là. C'est le premier alphabet à lire couramment." },
+  kata: { id: "kata", jp: "カタカナ", fr: "Katakana", rows: KANA_ROWS, words: KANA_WORDS, small: ["ー", "ッ", "ャ", "ュ", "ョ"],
+    intro: "L'alphabet des mots venus d'ailleurs, des noms étrangers et des onomatopées. On les apprend par le son d'abord, rangée par rangée, puis on les trace." },
+};
+Object.values(SCRIPTS).forEach(sc => { sc.all = mkAll(sc.rows); });
+const ALL_KANA = [...SCRIPTS.hira.all, ...SCRIPTS.kata.all];
+const curScript = () => SCRIPTS[route.script === "hira" ? "hira" : "kata"];
 let DICO = [];
 function rebuildDico() {
   const seen = new Map();
@@ -144,6 +152,7 @@ function rebuildDico() {
   };
   LESSONS.forEach((l, i) => l.vocab.forEach(([r, jp, k, fr]) => add({ r, jp, k, fr }, THEMES[l.theme].fr, "Leçon " + (i + 1))));
   KANA_WORDS.forEach(([jp, r, fr]) => add({ r, jp, k: jp, fr }, "Katakana", "Lecture katakana"));
+  HIRA_WORDS.forEach(([jp, r, fr]) => add({ r, jp, k: jp, fr }, "Hiragana", "Lecture hiragana"));
   KANJI.forEach(([c, , , , ex]) => ex.forEach(([r, jp, k, fr]) => add({ r, jp, k, fr }, "Kanji", "Kanji " + c)));
   state.custom.forEach(w => add(w, w.d || "Mes ajouts", "Ajouté le " + (w.added || ""), true));
   DICO = [...seen.values()].map(w => (w.custom ? w : w)).sort((a, b) => norm(a.r).localeCompare(norm(b.r)));
@@ -154,7 +163,7 @@ rebuildDico();
 let route = { tab: "lecons" };
 try { const t = localStorage.getItem(KEY + "-tab"); if (t) route.tab = t; } catch (e) {}
 function go(r) { route = r; try { localStorage.setItem(KEY + "-tab", r.tab); } catch (e) {} render(); window.scrollTo({ top: 0 }); }
-$$(".tab").forEach(b => b.onclick = () => go({ tab: b.dataset.tab }));
+$$(".tab").forEach(b => b.onclick = () => go({ tab: b.dataset.tab, script: b.dataset.tab === "kana" ? (route.script || "kata") : undefined }));
 const app = $("#app");
 // Décalage progressif des entrées d'une liste ou d'une grille, pour le fondu en cascade.
 function stagger(scope) {
@@ -165,15 +174,16 @@ function stagger(scope) {
 }
 function render() {
   if (currentTracer) { currentTracer.destroy(); currentTracer = null; }
+  if (currentSheet) { currentSheet.destroy(); currentSheet = null; }
   $$(".tab").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === route.tab ? "true" : "false"));
   app.innerHTML = "";
-  ({ lecons: viewLessons, katakana: viewKatakana, kanji: viewKanji, dico: viewDico })[route.tab]();
+  ({ lecons: viewLessons, kana: viewKana, kanji: viewKanji, calli: viewCalli, dico: viewDico })[route.tab]();
   stagger();
 }
 
 // ═══ Leçons ═══════════════════════════════════════════════════════
 const lessonDone = l => (state.lessons[l.id]?.best ?? 0) >= 80;
-const kanaMastered = () => KANA_ALL.filter(x => kanaLevel(x.k) === 2).length;
+const kanaMastered = () => ALL_KANA.filter(x => kanaLevel(x.k) === 2).length;
 function kanaLevel(k) { const s = state.kana[k]; if (!s) return 0; if (s.ok >= 4 && s.ok / s.n >= 0.8) return 2; return s.n ? 1 : 0; }
 
 function voiceNotice() {
@@ -196,7 +206,7 @@ function viewLessons() {
     </div>
     <div class="stats">
       <div class="stat"><b>${done}<small> / ${LESSONS.length}</small></b><span>leçons validées</span></div>
-      <div class="stat"><b>${kanaMastered()}<small> / ${KANA_ALL.length}</small></b><span>katakana maîtrisés</span></div>
+      <div class="stat"><b>${kanaMastered()}<small> / ${ALL_KANA.length}</small></b><span>kana maîtrisés</span></div>
       <div class="stat"><b>${traced}<small> / ${KANJI.length}</small></b><span>kanji tracés sans aide</span></div>
       <div class="stat"><b>${DICO.length}</b><span>mots au dico</span></div>
     </div>
@@ -219,7 +229,7 @@ function viewLessons() {
     b.onclick = () => go({ tab: "lecons", lesson: l.id, step: "culture" });
     list.append(b);
   });
-  app.append(h(`<footer class="credit">Tracés des kanji et katakana : données <a href="https://kanjivg.tagaini.net" target="_blank" rel="noopener">KanjiVG</a> d'Ulrich Apel, licence CC BY-SA 3.0. Voix : synthèse vocale japonaise de ton appareil.</footer>`));
+  app.append(h(`<footer class="credit">Tracés des kanji et des kana : données <a href="https://kanjivg.tagaini.net" target="_blank" rel="noopener">KanjiVG</a> d'Ulrich Apel, licence CC BY-SA 3.0. Voix : synthèse vocale japonaise de ton appareil.</footer>`));
 }
 
 const STEPS = [["culture","文化","Culture"],["vocab","語彙","Vocabulaire"],["grammaire","文法","Grammaire"],["exercices","練習","Exercices"]];
@@ -646,17 +656,26 @@ function Tracer(host, char, opts = {}) {
 }
 
 // ═══ Katakana ════════════════════════════════════════════════════
-let kanaSel = new Set(["a", "ka"]);
-try { const s = JSON.parse(localStorage.getItem(KEY + "-rows")); if (Array.isArray(s) && s.length) kanaSel = new Set(s); } catch (e) {}
-const saveSel = () => { try { localStorage.setItem(KEY + "-rows", JSON.stringify([...kanaSel])); } catch (e) {} };
+let kanaSel = { hira: new Set(["a", "ka"]), kata: new Set(["a", "ka"]) };
+try {
+  const s = JSON.parse(localStorage.getItem(KEY + "-rows"));
+  if (Array.isArray(s) && s.length) kanaSel.kata = new Set(s);
+  else if (s && s.hira && s.kata) kanaSel = { hira: new Set(s.hira), kata: new Set(s.kata) };
+} catch (e) {}
+const sel = () => kanaSel[curScript().id];
+const saveSel = () => { try { localStorage.setItem(KEY + "-rows", JSON.stringify({ hira: [...kanaSel.hira], kata: [...kanaSel.kata] })); } catch (e) {} };
 
-function viewKatakana() {
+function viewKana() {
   const mode = route.mode || "tableau";
+  const sc = curScript();
   app.append(h(`<section>
-    <div class="eyebrow">カタカナ · katakana</div>
-    <h1>Les katakana</h1>
-    <p class="muted prose" style="margin:6px 0 0">L'alphabet des mots venus d'ailleurs, des noms étrangers et des onomatopées. On les apprend par le son d'abord, rangée par rangée, puis on les trace.</p>
+    <div class="eyebrow">${sc.jp} · ${sc.fr.toLowerCase()}</div>
+    <h1>Les ${sc.fr.toLowerCase()}</h1>
+    <p class="muted prose" style="margin:6px 0 0">${sc.intro}</p>
     <div class="toolbar">
+      <div class="seg">
+        ${Object.values(SCRIPTS).map(x => `<button data-script="${x.id}" aria-pressed="${x.id === sc.id}"><span class="jp">${x.jp[0]}</span>${x.fr}</button>`).join("")}
+      </div>
       <div class="seg">
         <button data-mode="tableau" aria-pressed="${mode === "tableau"}"><span class="jp">表</span>Tableau</button>
         <button data-mode="exercices" aria-pressed="${mode === "exercices"}"><span class="jp">練</span>Exercices</button>
@@ -665,7 +684,8 @@ function viewKatakana() {
     </div>
     <div id="kbody"></div>
   </section>`));
-  $$("[data-mode]").forEach(b => b.onclick = () => go({ tab: "katakana", mode: b.dataset.mode }));
+  $$("[data-script]").forEach(b => b.onclick = () => go({ tab: "kana", script: b.dataset.script, mode }));
+  $$("[data-mode]").forEach(b => b.onclick = () => go({ tab: "kana", script: sc.id, mode: b.dataset.mode }));
   const body = $("#kbody");
   if (mode === "tableau") kanaTable(body);
   if (mode === "exercices") kanaExercises(body);
@@ -673,14 +693,15 @@ function viewKatakana() {
 }
 
 function kanaTable(body) {
+  const sc = curScript();
   const cell = c => c ? `<button class="kcell" data-k="${c[0]}" data-r="${c[1]}"><span class="dot l${kanaLevel(c[0])}"></span><span class="g">${c[0]}</span><span class="r">${c[1]}</span></button>` : `<div class="kcell empty"></div>`;
   const grid = rows => `<div class="kgrid-wrap"><div class="kgrid" data-stagger>${rows.map(r => r.cells.map(cell).join("")).join("")}</div></div>`;
   body.append(h(`<div class="two">
     <div>
       <div class="kgroup-title"><h3>Gojūon</h3><span class="muted">les 46 sons de base</span></div>
-      ${grid(KANA_ROWS.filter(r => !r.dak))}
+      ${grid(sc.rows.filter(r => !r.dak))}
       <div class="kgroup-title"><h3>Dakuten · handakuten</h3><span class="muted">゛ et ゜ changent la consonne</span></div>
-      ${grid(KANA_ROWS.filter(r => r.dak))}
+      ${grid(sc.rows.filter(r => r.dak))}
       <p class="muted" style="font-size:13px;margin-top:14px">Pastille pleine : maîtrisé (au moins 4 bonnes réponses et 80 % de réussite). Pastille claire : en cours. Pour allonger une voyelle, on ajoute ー (コーヒー, kōhī) ; un petit ッ double la consonne suivante (サッカー, sakkā).</p>
     </div>
     <div id="kdetail" class="kdetail"></div>
@@ -688,7 +709,7 @@ function kanaTable(body) {
   const detail = $("#kdetail");
   const showDetail = (k, r, scroll) => {
     if (currentTracer) { currentTracer.destroy(); currentTracer = null; }
-    const words = KANA_WORDS.filter(w => w[0].includes(k)).slice(0, 3);
+    const words = sc.words.filter(w => w[0].includes(k)).slice(0, 3);
     const s = state.kana[k];
     detail.innerHTML = "";
     detail.append(h(`<div class="stack">
@@ -700,26 +721,27 @@ function kanaTable(body) {
     if (scroll) detail.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
   };
   $$(".kcell[data-k]", body).forEach(b => b.onclick = () => { speak(b.dataset.k); showDetail(b.dataset.k, b.dataset.r, true); });
-  showDetail("ア", "a");
+  showDetail(sc.all[0].k, sc.all[0].r);
 }
 
 function rowPicker(onChange) {
   const el = h(`<div class="stack" style="gap:8px">
     <div class="row" style="justify-content:space-between"><span class="eyebrow">Rangées travaillées</span>
       <span class="row" style="gap:4px"><button class="btn ghost" data-all>Base</button><button class="btn ghost" data-dak>Toutes</button></span></div>
-    <div class="rowpick">${KANA_ROWS.map(r => `<button data-row="${r.id}" aria-pressed="${kanaSel.has(r.id)}" title="${r.cells.filter(Boolean).map(c => c[1]).join(" ")}">${r.label}</button>`).join("")}</div>
+    <div class="rowpick">${curScript().rows.map(r => `<button data-row="${r.id}" aria-pressed="${sel().has(r.id)}" title="${r.cells.filter(Boolean).map(c => c[1]).join(" ")}">${r.label}</button>`).join("")}</div>
   </div>`);
-  const sync = () => { $$("[data-row]", el).forEach(b => b.setAttribute("aria-pressed", String(kanaSel.has(b.dataset.row)))); saveSel(); onChange(); };
-  $$("[data-row]", el).forEach(b => b.onclick = () => { const id = b.dataset.row; if (kanaSel.has(id) && kanaSel.size > 1) kanaSel.delete(id); else kanaSel.add(id); sync(); });
-  el.querySelector("[data-all]").onclick = () => { kanaSel = new Set(KANA_ROWS.filter(r => !r.dak).map(r => r.id)); sync(); };
-  el.querySelector("[data-dak]").onclick = () => { kanaSel = new Set(KANA_ROWS.map(r => r.id)); sync(); };
+  const sync = () => { $$("[data-row]", el).forEach(b => b.setAttribute("aria-pressed", String(sel().has(b.dataset.row)))); saveSel(); onChange(); };
+  $$("[data-row]", el).forEach(b => b.onclick = () => { const id = b.dataset.row; if (sel().has(id) && sel().size > 1) sel().delete(id); else sel().add(id); sync(); });
+  el.querySelector("[data-all]").onclick = () => { kanaSel[curScript().id] = new Set(curScript().rows.filter(r => !r.dak).map(r => r.id)); sync(); };
+  el.querySelector("[data-dak]").onclick = () => { kanaSel[curScript().id] = new Set(curScript().rows.map(r => r.id)); sync(); };
   return el;
 }
-const selectedKana = () => KANA_ALL.filter(x => kanaSel.has(x.row));
+const selectedKana = () => curScript().all.filter(x => sel().has(x.row));
 
 function kanaExercises(body) {
   let kmode = route.kmode || "ecoute";
-  const modes = [["ecoute","聞","Son → katakana"],["lecture","読","Katakana → son"],["saisie","打","Écrire le son"],["mots","語","Lire des mots"]];
+  const sc = curScript();
+  const modes = [["ecoute","聞",`Son → ${sc.fr.toLowerCase()}`],["lecture","読",`${sc.fr} → son`],["saisie","打","Écrire le son"],["mots","語","Lire des mots"]];
   const wrap = h(`<div class="stack"></div>`);
   body.append(wrap);
   const picker = rowPicker(() => start());
@@ -740,10 +762,10 @@ function kanaExercises(body) {
     const pool = selectedKana();
     let items;
     if (kmode === "mots") {
-      const allowed = new Set(pool.map(x => x.k).concat(["ー", "ッ", "ャ", "ュ", "ョ"]));
-      let words = KANA_WORDS.filter(w => [...w[0]].every(c => allowed.has(c)));
+      const allowed = new Set(pool.map(x => x.k).concat(sc.small));
+      let words = sc.words.filter(w => [...w[0]].every(c => allowed.has(c)));
       const partial = words.length < 4;
-      if (partial) words = KANA_WORDS.slice().sort((a, b) => [...b[0]].filter(c => allowed.has(c)).length / b[0].length - [...a[0]].filter(c => allowed.has(c)).length / a[0].length).slice(0, 10);
+      if (partial) words = sc.words.slice().sort((a, b) => [...b[0]].filter(c => allowed.has(c)).length / b[0].length - [...a[0]].filter(c => allowed.has(c)).length / a[0].length).slice(0, 10);
       items = pick(words, Math.min(8, words.length)).map(w => ({ type: "mot", w }));
       if (partial) stage.dataset.partial = "1"; else delete stage.dataset.partial;
     } else {
@@ -763,7 +785,7 @@ function kanaExercises(body) {
       const it = items[idx];
       stage.innerHTML = "";
       stage.append(h(`<div class="progress"><span>${idx + 1} / ${items.length}</span><span class="meter"><i style="width:${idx / items.length * 100}%"></i></span><span>${score} ✓</span></div>`));
-      if (stage.dataset.partial && idx === 0) stage.append(h(`<div class="notice" style="margin-bottom:12px">Peu de mots utilisent seulement ces rangées : ceux-ci contiennent aussi quelques autres katakana.</div>`));
+      if (stage.dataset.partial && idx === 0) stage.append(h(`<div class="notice" style="margin-bottom:12px">Peu de mots utilisent seulement ces rangées : ceux-ci contiennent aussi quelques autres caractères.</div>`));
       const card = h(`<div class="card"></div>`);
       stage.append(card);
       const report = ok => { if (ok) score++; if (it.x) record(it.x.k, ok); };
@@ -786,7 +808,7 @@ function kanaItem(it, card, pool, report, onNext) {
   };
   const distract = (x, key) => {
     const others = pool.filter(o => o[key] !== x[key]);
-    const extra = KANA_ALL.filter(o => o[key] !== x[key] && !others.includes(o));
+    const extra = curScript().all.filter(o => o[key] !== x[key] && !others.includes(o));
     const uniq = [];
     for (const o of shuffle(others).concat(shuffle(extra))) { if (!uniq.some(u => u[key] === o[key])) uniq.push(o); if (uniq.length === 3) break; }
     return shuffle([x, ...uniq]);
@@ -794,7 +816,7 @@ function kanaItem(it, card, pool, report, onNext) {
   const x = it.x;
   if (it.type === "ecoute") {
     card.append(h(`<div class="kind"><span class="tag"><span class="jp">聞</span>Écoute</span></div>`));
-    const lb = h(`<div class="row" style="gap:14px"><button class="listen-big" aria-label="Réécouter">${ICON.play}</button><span class="muted">Quel katakana entends-tu ?</span></div>`);
+    const lb = h(`<div class="row" style="gap:14px"><button class="listen-big" aria-label="Réécouter">${ICON.play}</button><span class="muted">Quel caractère entends-tu ?</span></div>`);
     lb.firstElementChild.onclick = () => speak(x.k);
     card.append(lb);
     if (!TTS.ok) card.append(h(`<p class="prompt romaji">${x.r}</p>`));
@@ -854,13 +876,13 @@ function kanaTrace(body) {
   function nextKana() {
     if (currentTracer) { currentTracer.destroy(); currentTracer = null; }
     const pool = selectedKana().filter(x => STROKES[x.k] && x !== cur);
-    cur = pool[Math.random() * pool.length | 0] || KANA_ALL[0];
+    cur = pool[Math.random() * pool.length | 0] || curScript().all[0];
     stage.innerHTML = "";
     const left = h(`<div></div>`);
     const right = h(`<div class="stack">
       <div class="kjhead"><div class="g">${cur.k}</div><div class="stack" style="gap:6px"><div class="prompt romaji" style="margin:0">${cur.r}</div>${speakBtn(cur.k)}</div></div>
-      <p class="muted" style="margin:0">Trace le katakana dans la case. Chaque trait est vérifié : position, forme et sens.</p>
-      <div><button class="btn primary" id="knext">Katakana suivant →</button></div>
+      <p class="muted" style="margin:0">Trace le caractère dans la case. Chaque trait est vérifié : position, forme et sens.</p>
+      <div><button class="btn primary" id="knext">Caractère suivant →</button></div>
     </div>`);
     stage.append(left, right);
     currentTracer = Tracer(left, cur.k, { guided: true });
@@ -929,7 +951,7 @@ function viewKanjiDetail(c) {
 }
 
 // ═══ Dico ════════════════════════════════════════════════════════
-const DOMAINS = ["Société", "Histoire", "Politique", "Arts", "Katakana", "Kanji", "Vie quotidienne", "Mes ajouts"];
+const DOMAINS = ["Société", "Histoire", "Politique", "Arts", "Hiragana", "Katakana", "Kanji", "Vie quotidienne", "Mes ajouts"];
 let dq = "", dd = "", dform = false;
 function viewDico() {
   if (route.flash) return viewFlash();
@@ -1037,8 +1059,242 @@ function viewFlash() {
   show();
 }
 
+// ═══ Calligraphie — la feuille ═══════════════════════════════════
+// Une feuille d'entraînement à la façon des cahiers quadrillés japonais :
+// on écrit à main levée, le pinceau s'épaissit quand la main ralentit.
+const CALLI = { set: "eight", model: "filigrane", trait: "moyen", cols: 4, rows: 3 };
+try { Object.assign(CALLI, JSON.parse(localStorage.getItem(KEY + "-calli") || "{}")); } catch (e) {}
+const saveCalli = () => { try { localStorage.setItem(KEY + "-calli", JSON.stringify(CALLI)); } catch (e) {} };
+
+let currentSheet = null;
+function viewCalli() {
+  if (currentSheet) { currentSheet.destroy(); currentSheet = null; }
+  const set = CALLI_SETS.find(x => x.id === CALLI.set) || CALLI_SETS[0];
+  app.append(h(`<section>
+    <div class="eyebrow">書道 · shodō</div>
+    <h1>La feuille</h1>
+    <p class="muted prose" style="margin:6px 0 0">Ici rien n'est corrigé : on écrit à main levée, au doigt ou au stylet. Le tracé s'épaissit quand la main ralentit et s'affine quand elle file, comme un pinceau qui se relève.</p>
+
+    <div class="calli-tools no-print">
+      <label class="f">Série
+        <select id="cset">${CALLI_SETS.map(x => `<option value="${x.id}" ${x.id === set.id ? "selected" : ""}>${x.fr} — ${x.jp}</option>`).join("")}</select>
+      </label>
+      <div class="stack" style="gap:6px">
+        <span class="eyebrow">Modèle</span>
+        <div class="seg" style="margin:0">
+          <button data-mdl="filigrane" aria-pressed="${CALLI.model === "filigrane"}">Filigrane</button>
+          <button data-mdl="premiere" aria-pressed="${CALLI.model === "premiere"}">1<sup>re</sup> case</button>
+          <button data-mdl="aucun" aria-pressed="${CALLI.model === "aucun"}">Aucun</button>
+        </div>
+      </div>
+      <div class="stack" style="gap:6px">
+        <span class="eyebrow">Pinceau</span>
+        <div class="seg" style="margin:0">
+          <button data-trait="fin" aria-pressed="${CALLI.trait === "fin"}">Fin</button>
+          <button data-trait="moyen" aria-pressed="${CALLI.trait === "moyen"}">Moyen</button>
+          <button data-trait="large" aria-pressed="${CALLI.trait === "large"}">Large</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="sheetHost"></div>
+
+    <div class="row no-print" style="margin-top:12px">
+      <button class="btn" id="cundo"><span class="jp">戻</span>Annuler le trait</button>
+      <button class="btn" id="cdemo"><span class="jp">順</span>Voir le geste</button>
+      <button class="btn ghost" id="cclear">Effacer la feuille</button>
+      <span style="flex:1"></span>
+      <button class="btn" id="csave"><span class="jp">保</span>Enregistrer l'image</button>
+      <button class="btn" id="cprint"><span class="jp">刷</span>Imprimer</button>
+    </div>
+
+    <h3 class="no-print">Les huit gestes de 永</h3>
+    <p class="muted no-print" style="margin-top:0">Le caractère <b class="jp" style="color:var(--paper)">永</b> — « éternité » — ne compte que cinq traits, mais la tradition y lit huit gestes : c'est la gamme du pinceau, apprise avant tout le reste.</p>
+    <div class="eight no-print">${EIGHT.map(e => `<div class="eight-row"><span class="n">${e.n}</span><span class="jp g">${e.jp}</span><span class="r">${e.r}</span><span class="d"><b>${esc(e.fr)}</b> — ${esc(e.note)}</span></div>`).join("")}</div>
+  </section>`));
+
+  currentSheet = Sheet($("#sheetHost"), set);
+  $("#cset").onchange = e => { CALLI.set = e.target.value; saveCalli(); go({ tab: "calli" }); };
+  $$("[data-mdl]").forEach(b => b.onclick = () => { CALLI.model = b.dataset.mdl; saveCalli(); $$("[data-mdl]").forEach(x => x.setAttribute("aria-pressed", String(x === b))); currentSheet.redraw(); });
+  $$("[data-trait]").forEach(b => b.onclick = () => { CALLI.trait = b.dataset.trait; saveCalli(); $$("[data-trait]").forEach(x => x.setAttribute("aria-pressed", String(x === b))); });
+  $("#cundo").onclick = () => currentSheet.undo();
+  $("#cclear").onclick = () => currentSheet.clear();
+  $("#cdemo").onclick = () => currentSheet.demo();
+  $("#csave").onclick = () => currentSheet.save();
+  $("#cprint").onclick = () => window.print();
+}
+
+function Sheet(host, set) {
+  const el = h(`<div class="feuille-wrap"><canvas class="feuille" aria-label="Feuille d'entraînement"></canvas><div class="msg muted" aria-live="polite"></div></div>`);
+  host.append(el);
+  const cv = el.querySelector("canvas"), ctx = cv.getContext("2d");
+  const msg = el.querySelector(".msg");
+  const cols = () => (el.clientWidth < 480 ? 3 : 4);
+  let W = 600, H = 450, cell = 150, dpr = 1, strokes = [], live = null, anim = 0, alive = true, demoing = false;
+  const charAt = i => set.chars[i % set.chars.length];
+  const cellsCount = () => cols() * CALLI.rows;
+  const BASE = { fin: 0.055, moyen: 0.085, large: 0.125 };
+
+  function fit() {
+    const c = cols();
+    const w = el.clientWidth || 600;
+    cell = Math.floor(w / c);
+    W = cell * c; H = cell * CALLI.rows;
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    cv.width = W * dpr; cv.height = H * dpr;
+    cv.style.width = W + "px"; cv.style.height = H + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    redraw();
+  }
+  function cellBox(i) {
+    const c = cols();
+    return { x: (i % c) * cell, y: Math.floor(i / c) * cell, s: cell };
+  }
+  function drawModel(i, alpha) {
+    const ch = charAt(i), paths = STROKES[ch];
+    if (!paths) return;
+    const b = cellBox(i), k = b.s * 0.82 / 109, off = b.s * 0.09;
+    ctx.save();
+    ctx.translate(b.x + off, b.y + off); ctx.scale(k, k);
+    ctx.strokeStyle = `rgba(26,18,11,${alpha})`; ctx.lineWidth = 6; ctx.lineCap = "round"; ctx.lineJoin = "round";
+    paths.forEach(d => ctx.stroke(strokeInfo(d).path));
+    ctx.restore();
+  }
+  function redraw() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = cssVar("--tape-bg") || "#F4EADF";
+    ctx.fillRect(0, 0, W, H);
+    // quadrillage : cadre plein, croix pointillée dans chaque case
+    const c = cols();
+    for (let i = 0; i < cellsCount(); i++) {
+      const b = cellBox(i);
+      ctx.save();
+      ctx.strokeStyle = "rgba(160,60,30,.22)"; ctx.lineWidth = 1;
+      ctx.strokeRect(b.x + .5, b.y + .5, b.s - 1, b.s - 1);
+      ctx.setLineDash([5, 6]);
+      ctx.beginPath();
+      ctx.moveTo(b.x + b.s / 2, b.y + 4); ctx.lineTo(b.x + b.s / 2, b.y + b.s - 4);
+      ctx.moveTo(b.x + 4, b.y + b.s / 2); ctx.lineTo(b.x + b.s - 4, b.y + b.s / 2);
+      ctx.stroke();
+      ctx.restore();
+      if (CALLI.model === "filigrane") drawModel(i, .13);
+      if (CALLI.model === "premiere" && i % set.chars.length === i && i < set.chars.length) drawModel(i, .5);
+    }
+    strokes.forEach(inkStroke);
+    if (live) inkStroke(live);
+  }
+  // Trait d'encre à largeur variable : on remplit un ruban entre les points.
+  function inkStroke(st) {
+    const pts = st.pts;
+    if (pts.length < 2) {
+      if (pts.length === 1) { ctx.fillStyle = st.color; ctx.beginPath(); ctx.arc(pts[0].x, pts[0].y, pts[0].w / 2, 0, 7); ctx.fill(); }
+      return;
+    }
+    ctx.save();
+    ctx.fillStyle = st.color;
+    for (let i = 1; i < pts.length; i++) {
+      const a = pts[i - 1], b = pts[i];
+      const dx = b.x - a.x, dy = b.y - a.y, len = Math.hypot(dx, dy) || 1;
+      const nx = -dy / len, ny = dx / len;
+      ctx.beginPath();
+      ctx.moveTo(a.x + nx * a.w / 2, a.y + ny * a.w / 2);
+      ctx.lineTo(b.x + nx * b.w / 2, b.y + ny * b.w / 2);
+      ctx.lineTo(b.x - nx * b.w / 2, b.y - ny * b.w / 2);
+      ctx.lineTo(a.x - nx * a.w / 2, a.y - ny * a.w / 2);
+      ctx.closePath(); ctx.fill();
+      ctx.beginPath(); ctx.arc(b.x, b.y, b.w / 2, 0, 7); ctx.fill();
+    }
+    ctx.restore();
+  }
+  const local = e => { const r = cv.getBoundingClientRect(); return { x: (e.clientX - r.left) * W / r.width, y: (e.clientY - r.top) * H / r.height }; };
+  let lastT = 0, lastW = 0;
+  function widthFor(p, prev, e) {
+    const base = BASE[CALLI.trait] * cell;
+    const now = performance.now();
+    const dt = Math.max(now - lastT, 8); lastT = now;
+    const v = prev ? Math.hypot(p.x - prev.x, p.y - prev.y) / dt : 0; // px/ms
+    let w = base * Math.max(0.32, Math.min(1.35, 1.18 - v * 0.45));
+    if (e && e.pointerType === "pen" && e.pressure > 0) w = base * (0.35 + 1.15 * e.pressure);
+    lastW = lastW ? lastW * 0.62 + w * 0.38 : w;
+    return lastW;
+  }
+  cv.addEventListener("pointerdown", e => {
+    if (demoing) return;
+    cv.setPointerCapture(e.pointerId);
+    e.preventDefault();
+    lastT = performance.now(); lastW = 0;
+    const p = local(e);
+    live = { color: cssVar("--tape-ink") || "#1A120B", pts: [{ ...p, w: BASE[CALLI.trait] * cell * 0.55 }] };
+    msg.textContent = "";
+  });
+  cv.addEventListener("pointermove", e => {
+    if (!live) return;
+    const p = local(e), prev = live.pts[live.pts.length - 1];
+    if (Math.hypot(p.x - prev.x, p.y - prev.y) < 1.2) return;
+    live.pts.push({ ...p, w: widthFor(p, prev, e) });
+    redraw();
+  });
+  const end = () => {
+    if (!live) return;
+    const pts = live.pts;
+    for (let i = 0; i < Math.min(3, pts.length); i++) pts[pts.length - 1 - i].w *= 0.55 + i * 0.15; // la pointe se relève
+    strokes.push(live); live = null; redraw();
+  };
+  cv.addEventListener("pointerup", end);
+  cv.addEventListener("pointercancel", () => { live = null; redraw(); });
+
+  function demo() {
+    if (demoing) return;
+    demoing = true;
+    const ch = charAt(0), paths = (STROKES[ch] || []).map(strokeInfo);
+    const b = cellBox(0), k = b.s * 0.82 / 109, off = b.s * 0.09;
+    msg.textContent = `Ordre des traits de ${ch} — regarde la première case.`;
+    let i = 0;
+    const step = () => {
+      if (!alive || i >= paths.length) { demoing = false; msg.textContent = "À toi."; redraw(); return; }
+      const s = paths[i], t0 = performance.now(), dur = 600;
+      const frame = now => {
+        if (!alive) return;
+        const t = Math.min(1, (now - t0) / dur);
+        redraw();
+        ctx.save();
+        ctx.translate(b.x + off, b.y + off); ctx.scale(k, k);
+        ctx.strokeStyle = cssVar("--ember") || "#F07316"; ctx.lineWidth = 7; ctx.lineCap = "round"; ctx.lineJoin = "round";
+        for (let j = 0; j < i; j++) ctx.stroke(paths[j].path);
+        ctx.setLineDash([s.len, s.len]); ctx.lineDashOffset = s.len * (1 - t);
+        ctx.stroke(s.path); ctx.restore();
+        if (t < 1) anim = requestAnimationFrame(frame); else { i++; setTimeout(step, 120); }
+      };
+      anim = requestAnimationFrame(frame);
+    };
+    step();
+  }
+  async function save() {
+    const name = `feuille-${set.id}.png`;
+    const url = cv.toDataURL("image/png");
+    try {
+      const dl = window.claude && window.claude.use ? await window.claude.use("downloads") : null;
+      if (dl) { await dl.save({ filename: name, data: url }); msg.textContent = "Feuille enregistrée."; return; }
+    } catch (e) {}
+    const a = document.createElement("a");
+    a.href = url; a.download = name; document.body.append(a); a.click(); a.remove();
+    msg.textContent = "Feuille enregistrée (dossier Téléchargements).";
+  }
+
+  const ro = new ResizeObserver(fit); ro.observe(el);
+  fit();
+  msg.textContent = `${set.fr} — ${cellsCount()} cases.`;
+  return {
+    redraw, demo, save,
+    undo() { strokes.pop(); redraw(); },
+    clear() { strokes = []; redraw(); msg.textContent = "Feuille propre."; },
+    destroy() { alive = false; cancelAnimationFrame(anim); ro.disconnect(); },
+  };
+}
+
 // ═══ Démarrage ═══════════════════════════════════════════════════
 applyPrefs();
 render();
 setTimeout(() => { loadVoices(); TTS.checked = true; if (route.tab === "lecons" && !route.lesson && !$("#voice-notice") && (!TTS.ok || !TTS.voice)) { const n = h(voiceNotice() || "<span></span>"); const l = $(".lessons"); if (l && n.id) l.before(n); } }, 1800);
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (currentTracer) window.dispatchEvent(new Event("resize")); });
+

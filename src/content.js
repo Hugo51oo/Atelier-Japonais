@@ -531,3 +531,62 @@ const KANJI = [
   ["店","boutique","TEN","mise",[["mise","店","みせ","magasin"],["ten'in","店員","てんいん","vendeur, vendeuse"]]],
   ["心","cœur, esprit","SHIN","kokoro",[["kokoro","心","こころ","cœur, esprit"]]],
 ];
+
+// ─── Hiragana ──────────────────────────────────────────────────────
+const HIRA_ROWS = [
+  { id:"a",  label:"あ", cells:[["あ","a"],["い","i"],["う","u"],["え","e"],["お","o"]] },
+  { id:"ka", label:"か", cells:[["か","ka"],["き","ki"],["く","ku"],["け","ke"],["こ","ko"]] },
+  { id:"sa", label:"さ", cells:[["さ","sa"],["し","shi"],["す","su"],["せ","se"],["そ","so"]] },
+  { id:"ta", label:"た", cells:[["た","ta"],["ち","chi"],["つ","tsu"],["て","te"],["と","to"]] },
+  { id:"na", label:"な", cells:[["な","na"],["に","ni"],["ぬ","nu"],["ね","ne"],["の","no"]] },
+  { id:"ha", label:"は", cells:[["は","ha"],["ひ","hi"],["ふ","fu"],["へ","he"],["ほ","ho"]] },
+  { id:"ma", label:"ま", cells:[["ま","ma"],["み","mi"],["む","mu"],["め","me"],["も","mo"]] },
+  { id:"ya", label:"や", cells:[["や","ya"],null,["ゆ","yu"],null,["よ","yo"]] },
+  { id:"ra", label:"ら", cells:[["ら","ra"],["り","ri"],["る","ru"],["れ","re"],["ろ","ro"]] },
+  { id:"wa", label:"わ", cells:[["わ","wa"],null,null,null,["を","o"]] },
+  { id:"n",  label:"ん", cells:[["ん","n"],null,null,null,null] },
+  { id:"ga", label:"が", dak:true, cells:[["が","ga"],["ぎ","gi"],["ぐ","gu"],["げ","ge"],["ご","go"]] },
+  { id:"za", label:"ざ", dak:true, cells:[["ざ","za"],["じ","ji"],["ず","zu"],["ぜ","ze"],["ぞ","zo"]] },
+  { id:"da", label:"だ", dak:true, cells:[["だ","da"],["ぢ","ji"],["づ","zu"],["で","de"],["ど","do"]] },
+  { id:"ba", label:"ば", dak:true, cells:[["ば","ba"],["び","bi"],["ぶ","bu"],["べ","be"],["ぼ","bo"]] },
+  { id:"pa", label:"ぱ", dak:true, cells:[["ぱ","pa"],["ぴ","pi"],["ぷ","pu"],["ぺ","pe"],["ぽ","po"]] },
+];
+
+// Mots en hiragana pour la lecture : [hiragana, romaji, français]
+const HIRA_WORDS = [
+  ["ねこ","neko","chat"],["いぬ","inu","chien"],["やま","yama","montagne"],["かわ","kawa","rivière"],
+  ["うみ","umi","mer"],["そら","sora","ciel"],["はな","hana","fleur"],["みず","mizu","eau"],
+  ["ひと","hito","personne"],["とり","tori","oiseau"],["さかな","sakana","poisson"],["くるま","kuruma","voiture"],
+  ["でんしゃ","densha","train"],["がっこう","gakkō","école"],["せんせい","sensei","professeur"],["ともだち","tomodachi","ami"],
+  ["あさ","asa","matin"],["よる","yoru","nuit"],["きょう","kyō","aujourd'hui"],["あした","ashita","demain"],
+  ["ごはん","gohan","riz, repas"],["おちゃ","ocha","thé"],["たまご","tamago","œuf"],["さくら","sakura","cerisier"],
+  ["ゆき","yuki","neige"],["あめ","ame","pluie"],["かぜ","kaze","vent"],["ほん","hon","livre"],
+  ["えき","eki","gare"],["みせ","mise","magasin"],["しごと","shigoto","travail"],["おかね","okane","argent"],
+  ["なまえ","namae","nom"],["ありがとう","arigatō","merci"],["おはよう","ohayō","bonjour (le matin)"],["こんばんは","konbanwa","bonsoir"],
+  ["さようなら","sayōnara","au revoir"],["くだもの","kudamono","fruit"],["やさい","yasai","légume"],["いえ","ie","maison"],
+];
+
+// ─── Calligraphie ──────────────────────────────────────────────────
+// Les huit principes de 永 (永字八法) : chaque trait du caractère « éternité »
+// porte un nom et un geste. C'est la gamme de base de la main.
+const EIGHT = [
+  { n:1, jp:"側", r:"soku", fr:"le point", note:"On pose la pointe, on appuie, on relève : la goutte d'encre penche vers la droite." },
+  { n:2, jp:"勒", r:"roku", fr:"la bride", note:"Trait horizontal : attaque franche, corps légèrement montant, pause finale." },
+  { n:3, jp:"努", r:"do", fr:"l'effort", note:"Trait vertical : droit et tendu, il tient tout le caractère." },
+  { n:4, jp:"趯", r:"teki", fr:"le crochet", note:"En bas du vertical, on comprime puis on détend vers le haut à gauche." },
+  { n:5, jp:"策", r:"saku", fr:"le fouet", note:"Petit horizontal montant vers la droite, rapide, la pointe s'allège." },
+  { n:6, jp:"掠", r:"ryaku", fr:"le balayage", note:"Longue diagonale vers le bas à gauche, qui s'amincit jusqu'à la pointe." },
+  { n:7, jp:"啄", r:"taku", fr:"le coup de bec", note:"Courte diagonale à gauche, vive et nette." },
+  { n:8, jp:"磔", r:"taku", fr:"la coupe", note:"Diagonale vers le bas à droite : on appuie en avançant, puis on quitte le papier." },
+];
+
+// Séries proposées sur la feuille d'entraînement.
+const CALLI_SETS = [
+  { id:"eight", jp:"永", fr:"Les huit traits de 永", chars:["永"] },
+  { id:"ichi",  jp:"一二三", fr:"Les trois premiers nombres", chars:["一","二","三"] },
+  { id:"nature",jp:"山川木火水", fr:"Éléments et nature", chars:["山","川","木","火","水","土"] },
+  { id:"hito",  jp:"人大小", fr:"Le corps et la taille", chars:["人","大","小","口","心"] },
+  { id:"hira",  jp:"あいうえお", fr:"Hiragana — rangée あ", chars:["あ","い","う","え","お"] },
+  { id:"kata",  jp:"アイウエオ", fr:"Katakana — rangée ア", chars:["ア","イ","ウ","エ","オ"] },
+  { id:"mots",  jp:"日本語", fr:"Trois kanji des leçons", chars:["日","本","語"] },
+];
