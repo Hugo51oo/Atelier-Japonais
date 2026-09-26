@@ -182,7 +182,6 @@ function render() {
 }
 
 // ═══ Leçons ═══════════════════════════════════════════════════════
-const JPNUM = ["一","二","三","四","五","六","七","八","九","十","十一","十二","十三","十四","十五","十六","十七","十八","十九","二十"];
 const lessonDone = l => (state.lessons[l.id]?.best ?? 0) >= 80;
 const kanaMastered = () => ALL_KANA.filter(x => kanaLevel(x.k) === 2).length;
 function kanaLevel(k) { const s = state.kana[k]; if (!s) return 0; if (s.ok >= 4 && s.ok / s.n >= 0.8) return 2; return s.n ? 1 : 0; }
@@ -218,7 +217,7 @@ function viewLessons() {
   LESSONS.forEach((l, i) => {
     const th = THEMES[l.theme], best = state.lessons[l.id]?.best;
     const b = h(`<button class="lcard">
-      <span class="num">第${JPNUM[i] || i + 1}課</span>
+      <span class="num"><b>${i + 1}</b><span>課</span></span>
       <span>
         <span class="tag"><span class="jp">${th.jp}</span>${th.fr}</span>
         <h2>${esc(l.title)}</h2>

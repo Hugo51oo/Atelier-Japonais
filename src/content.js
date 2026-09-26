@@ -875,6 +875,437 @@ const LESSONS = [
     { q:"Qu'est-ce qu'un sentō ?", o:["Un bain public de quartier","Une source volcanique","Une auberge traditionnelle"], a:0 },
   ],
 },
+{
+  id: "l17", theme: "societe", title: "Offrir", jp: "贈り物", r: "okurimono",
+  culture: [
+    "Le cadeau règle une bonne part des relations sociales. En rentrant de voyage, on rapporte un <b>omiyage</b> pour ses collègues — presque toujours une boîte de gâteaux emballés à l'unité, spécialité de la région visitée, à partager au bureau.",
+    "Deux saisons d'échanges rythment l'année : l'<b>ochūgen</b> en juillet et l'<b>oseibo</b> en décembre, envoyés à ceux dont on a reçu de l'aide. Au Nouvel An, les enfants reçoivent l'<b>otoshidama</b>, de l'argent glissé dans une petite enveloppe décorée.",
+    "L'emballage compte autant que le contenu : le <b>furoshiki</b>, carré de tissu noué, sert de paquet réutilisable. On évite les ensembles de quatre, parce que <i>shi</i> — quatre — se prononce comme la mort, et l'on offre des deux mains, en s'excusant presque de la modestie du présent."
+  ],
+  vocab: [
+    ["okurimono","贈り物","おくりもの","cadeau"],
+    ["omiyage","お土産","おみやげ","souvenir rapporté de voyage"],
+    ["otoshidama","お年玉","おとしだま","étrennes du Nouvel An"],
+    ["furoshiki","風呂敷","ふろしき","tissu d'emballage"],
+    ["agemasu","あげます","あげます","donner (à quelqu'un)"],
+    ["moraimasu","もらいます","もらいます","recevoir"],
+    ["kuremasu","くれます","くれます","me donner"],
+    ["okurimasu","送ります","おくります","envoyer"],
+    ["orei","お礼","おれい","remerciement"],
+    ["kazoku","家族","かぞく","famille"],
+    ["ureshii","嬉しい","うれしい","heureux, content"],
+  ],
+  kanji: ["送","品","礼","正"],
+  grammar: {
+    title: "Donner et recevoir : agemasu, moraimasu, kuremasu",
+    explain: [
+      "Le japonais distingue le sens du don. <b>agemasu</b> : je donne à quelqu'un (<i>tomodachi ni hon o agemasu</i>). <b>moraimasu</b> : je reçois de quelqu'un (<i>tomodachi ni hon o moraimasu</i>). <b>kuremasu</b> : quelqu'un me donne (<i>tomodachi ga hon o kuremasu</i>).",
+      "La différence entre <i>agemasu</i> et <i>kuremasu</i> tient au point de vue : le verbe change selon que le cadeau s'éloigne de moi ou vient vers moi. On ne dit jamais <i>watashi ni agemasu</i>.",
+      "Avec la forme en -te, ces verbes disent le service rendu : <b>-te agemasu</b> (je rends service), <b>-te moraimasu</b> (on me rend service), <b>-te kuremasu</b> (quelqu'un fait cela pour moi)."
+    ],
+    table: { head: ["Verbe", "Qui donne", "Exemple"], rows: [
+      ["agemasu", "moi → quelqu'un", "imōto ni agemasu"],
+      ["moraimasu", "je reçois de", "sensei ni moraimasu"],
+      ["kuremasu", "quelqu'un → moi", "haha ga kuremasu"],
+      ["-te kuremasu", "on le fait pour moi", "oshiete kuremasu"],
+    ]},
+  },
+  sentences: [
+    { r:"Tomodachi ni omiyage o agemasu.", jp:"友達にお土産をあげます。", fr:"J'offre un souvenir à un ami.", t:["Tomodachi","ni","omiyage","o","agemasu"] },
+    { r:"Sensei ni hon o moraimashita.", jp:"先生に本をもらいました。", fr:"J'ai reçu un livre du professeur.", t:["Sensei","ni","hon","o","moraimashita"] },
+    { r:"Haha ga otoshidama o kuremashita.", jp:"母がお年玉をくれました。", fr:"Ma mère m'a donné mes étrennes.", t:["Haha","ga","otoshidama","o","kuremashita"] },
+    { r:"Kazoku ni tegami o okurimasu.", jp:"家族に手紙を送ります。", fr:"J'envoie une lettre à ma famille.", t:["Kazoku","ni","tegami","o","okurimasu"] },
+    { r:"Tanaka-san ga nihongo o oshiete kuremasu.", jp:"田中さんが日本語を教えてくれます。", fr:"Monsieur Tanaka m'enseigne le japonais.", t:["Tanaka-san","ga","nihongo","o","oshiete kuremasu"] },
+  ],
+  conj: [
+    { q:"Tomodachi ___ hon o agemasu.", hint:"le destinataire", a:["ni"] },
+    { q:"Haha ga okane o ___.", hint:"« m'a donné »", a:["kuremashita"] },
+    { q:"Sensei ni ___.", hint:"« j'ai reçu »", a:["moraimashita"] },
+    { q:"oshiemasu → « il me l'enseigne »", hint:"-te + kuremasu", a:["oshiete kuremasu"] },
+  ],
+  quiz: [
+    { q:"Qu'est-ce qu'un omiyage ?", o:["Un souvenir rapporté pour les autres","Un cadeau d'anniversaire","Une enveloppe de mariage"], a:0 },
+    { q:"Que reçoivent les enfants au Nouvel An ?", o:["L'otoshidama, de l'argent en enveloppe","Un furoshiki","Une carte de vœux"], a:0 },
+    { q:"Pourquoi éviter un ensemble de quatre ?", o:["« Shi », quatre, se dit comme la mort","Quatre porte malheur aux commerçants","C'est trop cher"], a:0 },
+  ],
+},
+{
+  id: "l18", theme: "histoire", title: "Quand la terre tremble", jp: "地震と防災", r: "jishin to bōsai",
+  culture: [
+    "L'archipel se trouve à la rencontre de quatre plaques tectoniques : il concentre une part considérable des séismes de forte magnitude de la planète. Le <b>1er septembre 1923</b>, le séisme du Kantō détruit Tōkyō et Yokohama et fait environ 105 000 morts ; la date est devenue la journée nationale de prévention.",
+    "Deux autres dates ont tout changé. <b>1995</b>, Kōbe : 6 434 morts, et une prise de conscience sur les normes de construction. <b>Le 11 mars 2011</b>, un séisme de magnitude 9,0 au large du Tōhoku déclenche un tsunami qui fait près de 20 000 morts ou disparus et provoque l'accident nucléaire de Fukushima.",
+    "D'où une culture de la préparation : alertes envoyées sur les téléphones quelques secondes avant l'onde destructrice, exercices d'évacuation à l'école et au bureau, sac d'urgence prêt à l'entrée, immeubles montés sur amortisseurs. Le premier réflexe enseigné : se protéger la tête, s'éloigner des fenêtres, puis gagner les hauteurs si la mer est proche."
+  ],
+  vocab: [
+    ["jishin","地震","じしん","séisme"],
+    ["tsunami","津波","つなみ","tsunami"],
+    ["bōsai","防災","ぼうさい","prévention des catastrophes"],
+    ["hinan","避難","ひなん","évacuation"],
+    ["abunai","危ない","あぶない","dangereux"],
+    ["tasukemasu","助けます","たすけます","aider, secourir"],
+    ["nigemasu","逃げます","にげます","fuir, s'échapper"],
+    ["yureru","揺れます","ゆれます","trembler"],
+    ["anzen","安全","あんぜん","sécurité"],
+    ["tsukue","机","つくえ","bureau, table"],
+    ["sugu ni","すぐに","すぐに","tout de suite"],
+  ],
+  kanji: ["地","震","助","防"],
+  grammar: {
+    title: "Si, quand : ~tara",
+    explain: [
+      "<b>~tara</b> se forme sur la forme en -ta, à laquelle on ajoute <b>-ra</b> : <i>jishin ga kitara</i> — s'il y a un séisme, quand il y aura un séisme. Le japonais ne distingue pas les deux.",
+      "La proposition principale suit : <i>Jishin ga kitara, tsukue no shita ni hairimasu</i> — en cas de séisme, on se met sous la table.",
+      "Avec un nom ou un adjectif en -na, on emploie <b>dattara</b> : <i>abunai dattara</i>… Avec un adjectif en -i, le -i devient <b>-kattara</b> : <i>takakattara kaimasen</i> — si c'est cher, je n'achète pas."
+    ],
+    table: { head: ["Forme", "Avec ~tara", "Sens"], rows: [
+      ["kimasu", "kitara", "si/quand ça vient"],
+      ["mimasu", "mitara", "si/quand je vois"],
+      ["takai", "takakattara", "si c'est cher"],
+      ["anzen desu", "anzen dattara", "si c'est sûr"],
+    ]},
+  },
+  sentences: [
+    { r:"Jishin ga kitara, tsukue no shita ni hairimasu.", jp:"地震が来たら、机の下に入ります。", fr:"En cas de séisme, on se met sous la table.", t:["Jishin","ga","kitara","tsukue no shita","ni","hairimasu"] },
+    { r:"Abunai desu kara, sugu ni nigete kudasai.", jp:"危ないですから、すぐに逃げてください。", fr:"C'est dangereux, fuyez tout de suite.", t:["Abunai desu","kara","sugu ni","nigete kudasai"] },
+    { r:"Tsunami ga kitara, takai tokoro ni ikimasu.", jp:"津波が来たら、高い所に行きます。", fr:"Si un tsunami arrive, on gagne les hauteurs.", t:["Tsunami","ga","kitara","takai tokoro","ni","ikimasu"] },
+    { r:"Tatemono ga totemo yuremashita.", jp:"建物がとても揺れました。", fr:"Le bâtiment a beaucoup tremblé.", t:["Tatemono","ga","totemo","yuremashita"] },
+    { r:"Minna de tasukeaimasu.", jp:"みんなで助け合います。", fr:"On s'entraide tous ensemble.", t:["Minna de","tasukeaimasu"] },
+  ],
+  conj: [
+    { q:"kimasu → forme en ~tara", hint:"« si ça vient »", a:["kitara"] },
+    { q:"mimasu → forme en ~tara", hint:"« si je vois »", a:["mitara"] },
+    { q:"takai → forme en ~tara", hint:"adjectif en -i", a:["takakattara"] },
+    { q:"nigemasu → demande polie", hint:"« fuyez »", a:["nigete kudasai"] },
+  ],
+  quiz: [
+    { q:"Que commémore le 1er septembre ?", o:["Le séisme du Kantō de 1923","Le séisme de Kōbe","La fin de la guerre"], a:0 },
+    { q:"Que s'est-il passé le 11 mars 2011 ?", o:["Séisme de magnitude 9,0 et tsunami au Tōhoku","Un typhon sur Ōsaka","L'éruption du mont Fuji"], a:0 },
+    { q:"Quel est le premier réflexe enseigné ?", o:["Se protéger la tête et s'éloigner des fenêtres","Sortir en courant dans la rue","Prendre l'ascenseur"], a:0 },
+  ],
+},
+{
+  id: "l19", theme: "societe", title: "Se loger", jp: "住まい", r: "sumai",
+  culture: [
+    "On mesure une pièce en <b>tatamis</b> : un <i>jō</i> vaut environ 1,65 m², et une chambre d'étudiant fait souvent six tatamis. Les annonces parlent de <b>2LDK</b> — deux chambres plus un séjour-cuisine — et l'on visite en calculant le nombre de nattes, pas les mètres carrés.",
+    "L'entrée, le <b>genkan</b>, est en contrebas : on s'y déchausse, chaussures tournées vers la sortie. Le sol de la pièce japonaise est fait de tatamis de paille de riz, changés tous les quelques années ; on y déroule le futon la nuit et on le range le matin.",
+    "Louer coûte cher à l'installation : caution, commission d'agence, et souvent le <b>reikin</b>, « argent de remerciement » versé au propriétaire et jamais rendu. Près de la moitié des logements du pays se concentrent dans les grandes agglomérations, où l'on construit haut et étroit."
+  ],
+  vocab: [
+    ["ie","家","いえ","maison"],
+    ["heya","部屋","へや","pièce, chambre"],
+    ["apāto","アパート","アパート","appartement"],
+    ["sumimasu","住みます","すみます","habiter"],
+    ["genkan","玄関","げんかん","entrée de la maison"],
+    ["tatami","畳","たたみ","tatami"],
+    ["futon","布団","ふとん","futon"],
+    ["hikkoshi","引っ越し","ひっこし","déménagement"],
+    ["semai","狭い","せまい","étroit, exigu"],
+    ["hiroi","広い","ひろい","spacieux"],
+    ["tsumori","つもり","つもり","intention"],
+  ],
+  kanji: ["家","部","屋","住"],
+  grammar: {
+    title: "Dire ses intentions : ~tsumori, ~yotei",
+    explain: [
+      "<b>~tsumori desu</b> exprime une intention personnelle. Il suit la forme du dictionnaire : <i>Tōkyō ni sumu tsumori desu</i> — j'ai l'intention d'habiter à Tōkyō. Au négatif : <i>sumanai tsumori desu</i>.",
+      "<b>~yotei desu</b> annonce ce qui est prévu, planifié, souvent par d'autres ou par un calendrier : <i>Raigetsu hikkoshi suru yotei desu</i> — je dois déménager le mois prochain.",
+      "Nuance : <i>tsumori</i> dit ce que je veux faire, <i>yotei</i> ce qui est au programme. Avec un nom, on emploie <b>no yotei</b> : <i>hikkoshi no yotei desu</i>."
+    ],
+    table: { head: ["Forme", "Exemple", "Sens"], rows: [
+      ["dict. + tsumori desu", "kau tsumori desu", "j'ai l'intention d'acheter"],
+      ["-nai + tsumori desu", "kawanai tsumori desu", "je compte ne pas acheter"],
+      ["dict. + yotei desu", "iku yotei desu", "il est prévu que j'aille"],
+      ["nom + no yotei desu", "ryokō no yotei desu", "un voyage est prévu"],
+    ]},
+  },
+  sentences: [
+    { r:"Kyōto ni sumu tsumori desu.", jp:"京都に住むつもりです。", fr:"J'ai l'intention d'habiter à Kyōto.", t:["Kyōto","ni","sumu","tsumori desu"] },
+    { r:"Kono heya wa rokujō desu.", jp:"この部屋は六畳です。", fr:"Cette pièce fait six tatamis.", t:["Kono","heya","wa","rokujō","desu"] },
+    { r:"Raigetsu hikkoshi suru yotei desu.", jp:"来月引っ越しする予定です。", fr:"Il est prévu que je déménage le mois prochain.", t:["Raigetsu","hikkoshi suru","yotei desu"] },
+    { r:"Genkan de kutsu o nugimasu.", jp:"玄関で靴を脱ぎます。", fr:"On se déchausse dans l'entrée.", t:["Genkan","de","kutsu","o","nugimasu"] },
+    { r:"Watashi no apāto wa semai desu ga, shizuka desu.", jp:"私のアパートは狭いですが、静かです。", fr:"Mon appartement est petit, mais calme.", t:["Watashi","no","apāto","wa","semai desu","ga","shizuka desu"] },
+  ],
+  conj: [
+    { q:"sumimasu → forme du dictionnaire", hint:"avant tsumori", a:["sumu"] },
+    { q:"kaimasu → « j'ai l'intention d'acheter »", hint:"dict. + tsumori desu", a:["kau tsumori desu"] },
+    { q:"ikimasu → « il est prévu que j'aille »", hint:"dict. + yotei desu", a:["iku yotei desu"] },
+    { q:"semai → négatif", hint:"adjectif en -i", a:["semakunai desu","semakunai"] },
+  ],
+  quiz: [
+    { q:"En quoi mesure-t-on une pièce ?", o:["En tatamis","En pieds","En tatamis et en litres"], a:0 },
+    { q:"Qu'est-ce que le genkan ?", o:["L'entrée en contrebas où l'on se déchausse","Le salon","Le balcon"], a:0 },
+    { q:"Qu'est-ce que le reikin ?", o:["De l'argent versé au propriétaire, non rendu","La caution rendue au départ","La taxe d'habitation"], a:0 },
+  ],
+},
+{
+  id: "l20", theme: "arts", title: "La musique", jp: "音楽", r: "ongaku",
+  culture: [
+    "Le <b>gagaku</b>, musique de la cour impériale, se joue encore aujourd'hui avec les mêmes instruments qu'il y a plus de mille ans : c'est l'un des plus anciens répertoires d'orchestre conservés au monde. À côté, le <b>shamisen</b> à trois cordes, le <b>koto</b> à treize et les tambours <b>taiko</b> portent la musique populaire et le théâtre.",
+    "L'<b>enka</b>, chanson sentimentale née au XXe siècle, chante la mer, l'alcool et les amours perdues. La <b>J-pop</b> et les génériques d'anime ont pris le relais auprès des jeunes générations et s'exportent largement.",
+    "Le <b>karaoke</b> — « orchestre vide » — est inventé au début des années 1970 ; on l'attribue le plus souvent à Daisuke Inoue, qui n'a jamais déposé de brevet. On y chante dans une salle privée, entre amis ou collègues, et mal chanter fait partie du jeu."
+  ],
+  vocab: [
+    ["ongaku","音楽","おんがく","musique"],
+    ["uta","歌","うた","chanson"],
+    ["utaimasu","歌います","うたいます","chanter"],
+    ["koe","声","こえ","voix"],
+    ["kikimasu","聞きます","ききます","écouter, entendre"],
+    ["shamisen","三味線","しゃみせん","shamisen"],
+    ["taiko","太鼓","たいこ","tambour"],
+    ["jōzu","上手","じょうず","doué, habile"],
+    ["heta","下手","へた","maladroit, mauvais"],
+    ["nagara","ながら","ながら","tout en (faisant)"],
+    ["karaoke","カラオケ","カラオケ","karaoké"],
+  ],
+  kanji: ["音","楽","歌","声"],
+  grammar: {
+    title: "Deux actions à la fois : ~nagara · être doué : ga jōzu desu",
+    explain: [
+      "<b>~nagara</b> relie deux actions simultanées faites par la même personne. On le colle au radical du verbe, celui qui reste quand on retire -masu : <i>ongaku o kikinagara benkyō shimasu</i> — j'étudie en écoutant de la musique. L'action principale est la seconde.",
+      "<b>ga jōzu desu</b> dit qu'on est doué à quelque chose, <b>ga heta desu</b> l'inverse : <i>uta ga jōzu desu</i> — il chante bien. Ce sont des adjectifs en -na.",
+      "Pour parler de soi, on préfère la modestie : on dira <i>amari jōzu ja arimasen</i> — je ne suis pas très bon — plutôt que de se déclarer doué."
+    ],
+    table: { head: ["Verbe", "Radical", "Avec ~nagara"], rows: [
+      ["kikimasu", "kiki", "kikinagara"],
+      ["tabemasu", "tabe", "tabenagara"],
+      ["arukimasu", "aruki", "arukinagara"],
+      ["hanashimasu", "hanashi", "hanashinagara"],
+    ]},
+  },
+  sentences: [
+    { r:"Ongaku o kikinagara benkyō shimasu.", jp:"音楽を聞きながら勉強します。", fr:"J'étudie en écoutant de la musique.", t:["Ongaku","o","kikinagara","benkyō shimasu"] },
+    { r:"Kanojo wa uta ga totemo jōzu desu.", jp:"彼女は歌がとても上手です。", fr:"Elle chante très bien.", t:["Kanojo","wa","uta","ga","totemo","jōzu desu"] },
+    { r:"Watashi wa amari jōzu ja arimasen.", jp:"私はあまり上手じゃありません。", fr:"Je ne suis pas très bon.", t:["Watashi","wa","amari","jōzu ja arimasen"] },
+    { r:"Tomodachi to karaoke ni ikimashita.", jp:"友達とカラオケに行きました。", fr:"Je suis allé au karaoké avec des amis.", t:["Tomodachi","to","karaoke","ni","ikimashita"] },
+    { r:"Taiko no oto ga suki desu.", jp:"太鼓の音が好きです。", fr:"J'aime le son des tambours.", t:["Taiko","no","oto","ga","suki desu"] },
+  ],
+  conj: [
+    { q:"kikimasu → forme en ~nagara", hint:"radical + nagara", a:["kikinagara"] },
+    { q:"tabemasu → forme en ~nagara", hint:"radical + nagara", a:["tabenagara"] },
+    { q:"Uta ___ jōzu desu.", hint:"particule devant jōzu", a:["ga"] },
+    { q:"jōzu → négatif poli", hint:"adjectif en -na", a:["jōzu ja arimasen","jōzu dewa arimasen"] },
+  ],
+  quiz: [
+    { q:"Qu'est-ce que le gagaku ?", o:["La musique de la cour impériale, jouée depuis plus de mille ans","La chanson populaire d'après-guerre","Un genre de J-pop"], a:0 },
+    { q:"Que veut dire « karaoke » ?", o:["Orchestre vide","Salle de chant","Micro libre"], a:0 },
+    { q:"Combien de cordes a le shamisen ?", o:["Trois","Treize","Six"], a:0 },
+  ],
+},
+{
+  id: "l21", theme: "politique", title: "Préfectures et pays natal", jp: "都道府県とふるさと", r: "todōfuken to furusato",
+  culture: [
+    "Le Japon est découpé en <b>47 préfectures</b> : quarante-trois <i>ken</i>, deux <i>fu</i> (Ōsaka et Kyōto), un <i>to</i> (Tōkyō) et un <i>dō</i> (Hokkaidō). Chacune élit son gouverneur et son assemblée, et gère écoles, routes et hôpitaux.",
+    "Les campagnes se vident : des villages entiers où plus de la moitié des habitants a passé 65 ans sont appelés <i>genkai shūraku</i>, « communautés à la limite ». Écoles fermées, maisons vides — les <i>akiya</i> — parfois cédées pour presque rien à qui veut s'installer.",
+    "Pour rééquilibrer, l'État a créé le <b>furusato nōzei</b> : on verse une partie de ses impôts à la commune de son choix, souvent celle de son enfance, qui remercie par un colis de produits locaux. Chaque préfecture cultive d'ailleurs sa spécialité et sa mascotte."
+  ],
+  vocab: [
+    ["ken","県","けん","préfecture"],
+    ["shi","市","し","ville"],
+    ["machi","町","まち","ville, quartier"],
+    ["mura","村","むら","village"],
+    ["furusato","故郷","ふるさと","pays natal"],
+    ["inaka","田舎","いなか","campagne"],
+    ["chihō","地方","ちほう","région, province"],
+    ["narimasu","なります","なります","devenir"],
+    ["sukunai","少ない","すくない","peu nombreux"],
+    ["ōi","多い","おおい","nombreux"],
+    ["meibutsu","名物","めいぶつ","spécialité locale"],
+  ],
+  kanji: ["県","市","村","町"],
+  grammar: {
+    title: "Devenir : ~ni narimasu, ~ku narimasu",
+    explain: [
+      "Avec un nom ou un adjectif en -na, on emploie <b>ni narimasu</b> : <i>sensei ni narimasu</i> — je deviens professeur ; <i>shizuka ni narimashita</i> — c'est devenu calme.",
+      "Avec un adjectif en -i, le -i final devient <b>-ku</b> : <i>takai → takaku narimasu</i>, ça devient cher. <i>Ii</i> fait <i>yoku narimasu</i>.",
+      "Le même mécanisme sert à dire qu'on fait devenir quelque chose, avec <b>shimasu</b> : <i>heya o kirei ni shimasu</i> — je rends la pièce propre."
+    ],
+    table: { head: ["Départ", "Devenir", "Sens"], rows: [
+      ["sensei", "sensei ni narimasu", "devenir professeur"],
+      ["shizuka", "shizuka ni narimasu", "devenir calme"],
+      ["takai", "takaku narimasu", "devenir cher"],
+      ["ii", "yoku narimasu", "s'améliorer"],
+    ]},
+  },
+  sentences: [
+    { r:"Inaka no hito ga sukunaku narimashita.", jp:"田舎の人が少なくなりました。", fr:"Les habitants des campagnes se sont raréfiés.", t:["Inaka","no","hito","ga","sukunaku narimashita"] },
+    { r:"Kono machi wa shizuka ni narimashita.", jp:"この町は静かになりました。", fr:"Cette ville est devenue calme.", t:["Kono","machi","wa","shizuka ni narimashita"] },
+    { r:"Nihon ni wa yonjūnana no ken ga arimasu.", jp:"日本には四十七の県があります。", fr:"Le Japon compte quarante-sept préfectures.", t:["Nihon ni wa","yonjūnana","no","ken","ga","arimasu"], say:"にほんにはよんじゅうななのけんがあります。" },
+    { r:"Watashi no furusato wa chiisai mura desu.", jp:"私の故郷は小さい村です。", fr:"Mon pays natal est un petit village.", t:["Watashi","no","furusato","wa","chiisai","mura","desu"] },
+    { r:"Kono ken no meibutsu wa ocha desu.", jp:"この県の名物はお茶です。", fr:"La spécialité de cette préfecture, c'est le thé.", t:["Kono","ken","no","meibutsu","wa","ocha","desu"] },
+  ],
+  conj: [
+    { q:"takai → « devenir cher »", hint:"adjectif en -i", a:["takaku narimasu"] },
+    { q:"shizuka → « devenir calme »", hint:"adjectif en -na", a:["shizuka ni narimasu"] },
+    { q:"ii → « s'améliorer »", hint:"exception", a:["yoku narimasu"] },
+    { q:"sensei ___ narimasu.", hint:"particule après un nom", a:["ni"] },
+  ],
+  quiz: [
+    { q:"Combien de préfectures compte le Japon ?", o:["47","32","64"], a:0 },
+    { q:"Que désigne un akiya ?", o:["Une maison vide, souvent à la campagne","Une mairie de village","Un marché local"], a:0 },
+    { q:"À quoi sert le furusato nōzei ?", o:["Verser une part de ses impôts à la commune de son choix","Payer moins d'impôts en ville","Financer les préfectures par l'État"], a:0 },
+  ],
+},
+{
+  id: "l22", theme: "histoire", title: "Hiroshima et la mémoire", jp: "広島と記憶", r: "Hiroshima to kioku",
+  culture: [
+    "Le <b>6 août 1945 à 8 h 15</b>, une bombe atomique est larguée sur <b>Hiroshima</b> ; trois jours plus tard, une seconde frappe Nagasaki. Les estimations font état d'environ 140 000 morts à Hiroshima à la fin de l'année 1945, en comptant les suites des radiations.",
+    "Le seul bâtiment laissé en ruine au centre, le <b>Dôme de Genbaku</b>, est inscrit au patrimoine mondial en 1996. Le parc du Mémorial de la paix l'entoure ; une flamme y brûle, qui doit s'éteindre le jour où la dernière arme nucléaire aura disparu.",
+    "L'histoire de <b>Sadako Sasaki</b>, morte d'une leucémie à douze ans après avoir plié des grues en papier, a fait de l'<b>origami</b> de grue un symbole mondial de la paix : on en dépose par milliers au monument des enfants. Chaque 6 août, la ville sonne la cloche à 8 h 15."
+  ],
+  vocab: [
+    ["heiwa","平和","へいわ","paix"],
+    ["sensō","戦争","せんそう","guerre"],
+    ["kioku","記憶","きおく","mémoire, souvenir"],
+    ["inori","祈り","いのり","prière"],
+    ["tsuru","鶴","つる","grue (oiseau)"],
+    ["origami","折り紙","おりがみ","pliage de papier"],
+    ["nokorimasu","残ります","のこります","rester, subsister"],
+    ["tsutaemasu","伝えます","つたえます","transmettre"],
+    ["kanashimi","悲しみ","かなしみ","tristesse"],
+    ["wasuremasu","忘れます","わすれます","oublier"],
+  ],
+  kanji: ["平","和","戦","争"],
+  grammar: {
+    title: "Le passif : ~raremasu",
+    explain: [
+      "Au passif, le groupe 1 transforme la syllabe avant -masu en -a puis ajoute <b>-remasu</b> : <i>tsukurimasu → tsukuraremasu</i> (être fabriqué), <i>kakimasu → kakaremasu</i> (être écrit).",
+      "Le groupe 2 ajoute <b>-raremasu</b> au radical : <i>tabemasu → taberaremasu</i>. Les irréguliers donnent <i>shimasu → saremasu</i> et <i>kimasu → koraremasu</i>.",
+      "L'agent, quand il est nommé, est marqué par <b>ni</b> : <i>Kono hon wa gakusei ni yomaremasu</i> — ce livre est lu par les étudiants. Le passif sert souvent à parler d'un fait sans en désigner l'auteur."
+    ],
+    table: { head: ["Actif", "Passif", "Sens"], rows: [
+      ["tsukurimasu", "tsukuraremasu", "être fabriqué"],
+      ["kakimasu", "kakaremasu", "être écrit"],
+      ["tabemasu", "taberaremasu", "être mangé"],
+      ["shimasu", "saremasu", "être fait"],
+    ]},
+  },
+  sentences: [
+    { r:"Kono kōen wa heiwa no tame ni tsukuraremashita.", jp:"この公園は平和のために作られました。", fr:"Ce parc a été créé pour la paix.", t:["Kono","kōen","wa","heiwa no tame ni","tsukuraremashita"] },
+    { r:"Machi wa sensō de kowasaremashita.", jp:"町は戦争で壊されました。", fr:"La ville a été détruite par la guerre.", t:["Machi","wa","sensō","de","kowasaremashita"] },
+    { r:"Sadako no hanashi wa ima mo tsutaerarete imasu.", jp:"禎子の話は今も伝えられています。", fr:"L'histoire de Sadako se transmet encore aujourd'hui.", t:["Sadako","no","hanashi","wa","ima mo","tsutaerarete imasu"], say:"さだこのはなしはいまもつたえられています。" },
+    { r:"Watashitachi wa sensō o wasuremasen.", jp:"私たちは戦争を忘れません。", fr:"Nous n'oublions pas la guerre.", t:["Watashitachi","wa","sensō","o","wasuremasen"] },
+    { r:"Tsuru wa heiwa no shirushi desu.", jp:"鶴は平和のしるしです。", fr:"La grue est un symbole de paix.", t:["Tsuru","wa","heiwa","no","shirushi","desu"] },
+  ],
+  conj: [
+    { q:"tsukurimasu → passif", hint:"groupe 1", a:["tsukuraremasu"] },
+    { q:"kakimasu → passif", hint:"groupe 1", a:["kakaremasu"] },
+    { q:"tabemasu → passif", hint:"groupe 2", a:["taberaremasu"] },
+    { q:"shimasu → passif", hint:"irrégulier", a:["saremasu"] },
+  ],
+  quiz: [
+    { q:"Quand la bombe est-elle larguée sur Hiroshima ?", o:["Le 6 août 1945 à 8 h 15","Le 9 août 1945","Le 15 août 1945"], a:0 },
+    { q:"Qu'est-ce que le Dôme de Genbaku ?", o:["Le bâtiment laissé en ruine, au patrimoine mondial depuis 1996","Un musée construit en 1996","Le mémorial des enfants"], a:0 },
+    { q:"Pourquoi plie-t-on des grues en papier ?", o:["En mémoire de Sadako Sasaki, comme vœu de paix","Pour la fête des enfants","Pour décorer les sanctuaires"], a:0 },
+  ],
+},
+{
+  id: "l23", theme: "arts", title: "Le jardin", jp: "日本庭園", r: "nihon teien",
+  culture: [
+    "Le jardin japonais ne se promène pas toujours : il se regarde. Le <b>karesansui</b>, jardin sec, remplace l'eau par du gravier ratissé et les montagnes par des pierres dressées. Celui du <b>Ryōan-ji</b>, à Kyōto, aligne quinze pierres disposées de telle façon qu'on n'en voit jamais plus de quatorze à la fois.",
+    "Le <b>shakkei</b> — le « paysage emprunté » — intègre au jardin une montagne ou une forêt lointaines, en cadrant la vue par des haies et des toits. Rien n'est laissé au hasard : chaque pin est taillé pendant des décennies pour ressembler à un vieil arbre battu par le vent.",
+    "Trois jardins sont dits les plus beaux du pays : Kenroku-en à Kanazawa, Kōraku-en à Okayama et Kairaku-en à Mito. La mousse, les érables, la pierre mouillée : l'esthétique cherche l'impermanence plutôt que l'éclat."
+  ],
+  vocab: [
+    ["niwa","庭","にわ","jardin"],
+    ["teien","庭園","ていえん","jardin (aménagé)"],
+    ["ishi","石","いし","pierre"],
+    ["ike","池","いけ","bassin, étang"],
+    ["koke","苔","こけ","mousse"],
+    ["matsu","松","まつ","pin"],
+    ["shizuka","静か","しずか","calme"],
+    ["utsukushii","美しい","うつくしい","beau"],
+    ["hoshii","欲しい","ほしい","vouloir (une chose)"],
+    ["sugimasu","すぎます","すぎます","trop, à l'excès"],
+    ["nagameru","眺めます","ながめます","contempler"],
+  ],
+  kanji: ["庭","石","池","静"],
+  grammar: {
+    title: "Trop : ~sugimasu · vouloir une chose : ~ga hoshii desu",
+    explain: [
+      "<b>~sugimasu</b> marque l'excès. Sur un verbe, il se colle au radical : <i>tabesugimashita</i> — j'ai trop mangé. Sur un adjectif en -i, on retire le -i : <i>takasugimasu</i> — c'est trop cher. Sur un adjectif en -na, on l'ajoute tel quel : <i>shizuka sugimasu</i>.",
+      "<b>~ga hoshii desu</b> dit qu'on veut une chose (pas une action, qui demande <i>-tai</i>) : <i>Ishi no niwa ga hoshii desu</i> — je voudrais un jardin de pierres.",
+      "Comme <i>-tai</i>, <i>hoshii</i> ne s'emploie pas pour dire ce qu'une autre personne veut : on ajoute alors <i>~hoshigatte imasu</i> ou l'on passe par « il semble que »."
+    ],
+    table: { head: ["Base", "Avec ~sugimasu", "Sens"], rows: [
+      ["tabemasu", "tabesugimasu", "manger de trop"],
+      ["nomimasu", "nomisugimasu", "boire de trop"],
+      ["takai", "takasugimasu", "être trop cher"],
+      ["shizuka", "shizuka sugimasu", "être trop calme"],
+    ]},
+  },
+  sentences: [
+    { r:"Kono niwa wa totemo utsukushii desu.", jp:"この庭はとても美しいです。", fr:"Ce jardin est très beau.", t:["Kono","niwa","wa","totemo","utsukushii","desu"] },
+    { r:"Ishi to koke dake no niwa desu.", jp:"石と苔だけの庭です。", fr:"C'est un jardin fait seulement de pierres et de mousse.", t:["Ishi","to","koke","dake no","niwa","desu"] },
+    { r:"Kinō wa ocha o nomisugimashita.", jp:"昨日はお茶を飲みすぎました。", fr:"Hier, j'ai bu trop de thé.", t:["Kinō","wa","ocha","o","nomisugimashita"] },
+    { r:"Chiisai ike ga hoshii desu.", jp:"小さい池が欲しいです。", fr:"Je voudrais un petit bassin.", t:["Chiisai","ike","ga","hoshii desu"] },
+    { r:"Ryōan-ji no ishi wa jūgo arimasu.", jp:"龍安寺の石は十五あります。", fr:"Le Ryōan-ji compte quinze pierres.", t:["Ryōan-ji","no","ishi","wa","jūgo","arimasu"], say:"りょうあんじのいしはじゅうごあります。" },
+  ],
+  conj: [
+    { q:"tabemasu → « manger de trop »", hint:"radical + sugimasu", a:["tabesugimasu"] },
+    { q:"takai → « trop cher »", hint:"on retire le -i", a:["takasugimasu"] },
+    { q:"Niwa ___ hoshii desu.", hint:"particule devant hoshii", a:["ga"] },
+    { q:"nomimasu → « j'ai trop bu »", hint:"passé de nomisugimasu", a:["nomisugimashita"] },
+  ],
+  quiz: [
+    { q:"Qu'est-ce qu'un karesansui ?", o:["Un jardin sec, de gravier et de pierres","Un jardin de thé","Un jardin de promenade avec étang"], a:0 },
+    { q:"Combien de pierres voit-on à la fois au Ryōan-ji ?", o:["Quatorze au maximum, sur quinze","Les quinze","Sept"], a:0 },
+    { q:"Que désigne le shakkei ?", o:["Le paysage lointain emprunté par le jardin","La taille des pins","Le ratissage du gravier"], a:0 },
+  ],
+},
+{
+  id: "l24", theme: "societe", title: "Les rites de l'année", jp: "年中行事", r: "nenjū gyōji",
+  culture: [
+    "L'année s'ouvre par le <b>hatsumōde</b>, la première visite au sanctuaire, où l'on prie pour l'année qui vient. Fin avril et début mai, la <b>Golden Week</b> aligne quatre jours fériés : c'est la grande semaine de voyage, trains pleins et autoroutes saturées.",
+    "À la mi-août vient l'<b>Obon</b> : on rentre au pays, on nettoie les tombes familiales et l'on danse le <i>bon odori</i> sur la place du quartier. La tradition veut que les âmes des ancêtres reviennent quelques jours parmi les vivants, guidées par des lanternes.",
+    "Les rites de la vie se partagent entre les religions : mariage au sanctuaire ou à la chapelle, funérailles au temple bouddhique. On y apporte une enveloppe — <i>koden</i> pour un deuil, <i>goshūgi</i> pour un mariage — au montant codifié, en billets neufs pour la joie, usagés pour le deuil."
+  ],
+  vocab: [
+    ["shōgatsu","正月","しょうがつ","Nouvel An"],
+    ["hatsumōde","初詣","はつもうで","première visite au sanctuaire"],
+    ["obon","お盆","おぼん","fête des morts"],
+    ["kekkon","結婚","けっこん","mariage"],
+    ["oiwai","お祝い","おいわい","félicitations, cadeau de fête"],
+    ["ryokō","旅行","りょこう","voyage"],
+    ["kazoku","家族","かぞく","famille"],
+    ["shinseki","親戚","しんせき","parenté"],
+    ["irasshaimase","いらっしゃいませ","いらっしゃいませ","bienvenue (dans un commerce)"],
+    ["onegaishimasu","お願いします","おねがいします","s'il vous plaît, je vous prie"],
+    ["osewa ni narimashita","お世話になりました","おせわになりました","merci de votre aide"],
+  ],
+  kanji: ["式","祝","旅","族"],
+  grammar: {
+    title: "Les formules de politesse",
+    explain: [
+      "Le japonais poli repose moins sur des règles que sur des <b>formules toutes faites</b>, à placer au bon moment. <i>Irasshaimase</i> vous accueille en boutique ; on n'y répond pas. <i>Onegaishimasu</i> accompagne toute demande ; <i>sumimasen</i> sert à la fois d'excuse, de remerciement et d'appel.",
+      "Le <b>keigo</b> dispose de verbes entiers : <i>irasshaimasu</i> remplace <i>imasu</i> ou <i>ikimasu</i> pour parler de l'autre avec respect ; <i>itadakimasu</i> et <i>mairimasu</i> s'emploient pour soi, en s'abaissant.",
+      "À retenir pour les occasions : <b>omedetō gozaimasu</b> (félicitations), <b>otsukaresama desu</b> (bon courage, merci pour le travail), <b>osewa ni narimashita</b> (merci de tout ce que vous avez fait)."
+    ],
+    table: { head: ["Neutre", "Respect (l'autre)", "Modestie (soi)"], rows: [
+      ["imasu / ikimasu", "irasshaimasu", "orimasu / mairimasu"],
+      ["shimasu", "nasaimasu", "itashimasu"],
+      ["tabemasu", "meshiagarimasu", "itadakimasu"],
+      ["iimasu", "osshaimasu", "mōshimasu"],
+    ]},
+  },
+  sentences: [
+    { r:"Shōgatsu ni kazoku to hatsumōde ni ikimasu.", jp:"正月に家族と初詣に行きます。", fr:"Au Nouvel An, je vais au sanctuaire avec ma famille.", t:["Shōgatsu","ni","kazoku","to","hatsumōde","ni","ikimasu"] },
+    { r:"Obon ni furusato ni kaerimasu.", jp:"お盆に故郷に帰ります。", fr:"Pour l'Obon, je rentre au pays.", t:["Obon","ni","furusato","ni","kaerimasu"] },
+    { r:"Go-kekkon omedetō gozaimasu.", jp:"ご結婚おめでとうございます。", fr:"Toutes mes félicitations pour votre mariage.", t:["Go-kekkon","omedetō gozaimasu"] },
+    { r:"Taihen osewa ni narimashita.", jp:"大変お世話になりました。", fr:"Merci infiniment pour votre aide.", t:["Taihen","osewa ni narimashita"] },
+    { r:"Kochira ni irasshatte kudasai.", jp:"こちらにいらっしゃってください。", fr:"Venez par ici, je vous prie.", t:["Kochira","ni","irasshatte kudasai"] },
+  ],
+  conj: [
+    { q:"ikimasu → forme respectueuse", hint:"on parle de l'autre", a:["irasshaimasu"] },
+    { q:"tabemasu → forme modeste", hint:"on parle de soi", a:["itadakimasu"] },
+    { q:"shimasu → forme modeste", hint:"on parle de soi", a:["itashimasu"] },
+    { q:"« Félicitations »", hint:"formule complète", a:["omedetō gozaimasu","omedetou gozaimasu"] },
+  ],
+  quiz: [
+    { q:"Qu'est-ce que le hatsumōde ?", o:["La première visite au sanctuaire de l'année","Le grand ménage de fin d'année","La fête des enfants"], a:0 },
+    { q:"Que célèbre l'Obon ?", o:["Le retour des âmes des ancêtres","La moisson du riz","L'anniversaire de l'empereur"], a:0 },
+    { q:"Quels billets met-on dans une enveloppe de deuil ?", o:["Des billets usagés","Des billets neufs","Peu importe"], a:0 },
+  ],
+},
 ];
 
 // ─── Katakana ──────────────────────────────────────────────────────
@@ -988,6 +1419,38 @@ const KANJI = [
   ["道","chemin, voie","DŌ","michi",[["michi","道","みち","chemin"],["sadō","茶道","さどう","voie du thé"]]],
   ["高","haut, cher","KŌ","taka(i)",[["takai","高い","たかい","cher, haut"],["kōkō","高校","こうこう","lycée"]]],
   ["気","air, esprit, humeur","KI, KE","—",[["tenki","天気","てんき","météo"],["kimochii","気持ちいい","きもちいい","agréable"]]],
+  ["送","envoyer","SŌ","oku(ru)",[["okurimasu","送ります","おくります","envoyer"],["okurimono","贈り物","おくりもの","cadeau"]]],
+  ["品","article, qualité","HIN","shina",[["shinamono","品物","しなもの","marchandise"],["sakuhin","作品","さくひん","œuvre"]]],
+  ["礼","politesse, remerciement","REI, RAI","—",[["orei","お礼","おれい","remerciement"],["shitsurei","失礼","しつれい","impolitesse, « pardon »"]]],
+  ["正","juste, correct","SEI, SHŌ","tada(shii)",[["shōgatsu","正月","しょうがつ","Nouvel An"],["tadashii","正しい","ただしい","juste, exact"]]],
+  ["地","terre, lieu","CHI, JI","—",[["jishin","地震","じしん","séisme"],["chihō","地方","ちほう","région"]]],
+  ["震","trembler","SHIN","furu(eru)",[["jishin","地震","じしん","séisme"],["shindo","震度","しんど","intensité sismique"]]],
+  ["助","aider","JO","tasu(keru)",[["tasukemasu","助けます","たすけます","aider"],["joshu","助手","じょしゅ","assistant"]]],
+  ["防","prévenir, protéger","BŌ","fuse(gu)",[["bōsai","防災","ぼうさい","prévention des catastrophes"],["shōbō","消防","しょうぼう","pompiers"]]],
+  ["家","maison, famille","KA, KE","ie, ya",[["ie","家","いえ","maison"],["kazoku","家族","かぞく","famille"]]],
+  ["部","partie, section","BU","—",[["heya","部屋","へや","pièce"],["bukatsu","部活","ぶかつ","club scolaire"]]],
+  ["屋","boutique, toit","OKU","ya",[["heya","部屋","へや","pièce"],["honya","本屋","ほんや","librairie"]]],
+  ["住","habiter","JŪ","su(mu)",[["sumimasu","住みます","すみます","habiter"],["jūsho","住所","じゅうしょ","adresse"]]],
+  ["音","son","ON","oto",[["ongaku","音楽","おんがく","musique"],["oto","音","おと","son, bruit"]]],
+  ["楽","plaisir, musique","GAKU, RAKU","tano(shii)",[["ongaku","音楽","おんがく","musique"],["tanoshii","楽しい","たのしい","agréable, amusant"]]],
+  ["歌","chanter, chanson","KA","uta(u)",[["uta","歌","うた","chanson"],["utaimasu","歌います","うたいます","chanter"]]],
+  ["声","voix","SEI","koe",[["koe","声","こえ","voix"],["ōgoe","大声","おおごえ","voix forte"]]],
+  ["県","préfecture","KEN","—",[["ken","県","けん","préfecture"],["kenchō","県庁","けんちょう","préfecture (administration)"]]],
+  ["市","ville, marché","SHI","ichi",[["shi","市","し","ville"],["shiyakusho","市役所","しやくしょ","mairie"]]],
+  ["村","village","SON","mura",[["mura","村","むら","village"],["sonchō","村長","そんちょう","maire du village"]]],
+  ["町","ville, quartier","CHŌ","machi",[["machi","町","まち","ville, quartier"],["shitamachi","下町","したまち","quartiers populaires"]]],
+  ["平","plat, paisible","HEI, BYŌ","tai(ra)",[["heiwa","平和","へいわ","paix"],["Heian","平安","へいあん","époque Heian"]]],
+  ["和","harmonie, japonais","WA","yawa(ragu)",[["heiwa","平和","へいわ","paix"],["washoku","和食","わしょく","cuisine japonaise"]]],
+  ["戦","combattre","SEN","tataka(u)",[["sensō","戦争","せんそう","guerre"],["taisen","大戦","たいせん","guerre mondiale"]]],
+  ["争","se disputer","SŌ","araso(u)",[["sensō","戦争","せんそう","guerre"],["kyōsō","競争","きょうそう","concurrence"]]],
+  ["庭","jardin","TEI","niwa",[["niwa","庭","にわ","jardin"],["teien","庭園","ていえん","jardin aménagé"]]],
+  ["石","pierre","SEKI, KOKU","ishi",[["ishi","石","いし","pierre"],["seki-tei","石庭","せきてい","jardin de pierres"]]],
+  ["池","étang, bassin","CHI","ike",[["ike","池","いけ","bassin"],["denchi","電池","でんち","pile"]]],
+  ["静","calme","SEI","shizu(ka)",[["shizuka","静か","しずか","calme"],["seishi","静止","せいし","immobilité"]]],
+  ["式","cérémonie, formule","SHIKI","—",[["kekkonshiki","結婚式","けっこんしき","cérémonie de mariage"],["nyūgakushiki","入学式","にゅうがくしき","cérémonie de rentrée"]]],
+  ["祝","célébrer","SHUKU","iwa(u)",[["oiwai","お祝い","おいわい","félicitations, cadeau de fête"],["shukujitsu","祝日","しゅくじつ","jour férié"]]],
+  ["旅","voyage","RYO","tabi",[["ryokō","旅行","りょこう","voyage"],["tabi","旅","たび","voyage, périple"]]],
+  ["族","famille, clan","ZOKU","—",[["kazoku","家族","かぞく","famille"],["minzoku","民族","みんぞく","peuple, ethnie"]]],
 ];
 
 // ─── Hiragana ──────────────────────────────────────────────────────

@@ -9,9 +9,9 @@ L'oral passe d'abord par le romaji ; l'écriture japonaise accompagne toujours l
 
 | | |
 |---|---|
-| **学 Leçons** | 16 leçons thématiques (société, histoire, politique, arts) : texte culturel, vocabulaire, point de grammaire et conjugaison, puis ~16 exercices mélangés — écoute, dictée, écrit en romaji, phrases à remettre dans l'ordre, conjugaison, quiz culturel. Leçon validée à 80 %. |
+| **学 Leçons** | 24 leçons thématiques (société, histoire, politique, arts) : texte culturel, vocabulaire, point de grammaire et conjugaison, puis ~16 exercices mélangés — écoute, dictée, écrit en romaji, phrases à remettre dans l'ordre, conjugaison, quiz culturel. Leçon validée à 80 %. |
 | **あ Kana** | Les 142 kana — hiragana et katakana, gojūon + dakuten : tableau avec suivi de maîtrise, quatre exercices (son → kana, kana → son, saisie, lecture de mots) et tracé guidé. |
-| **字 Kanji** | 75 kanji tirés des leçons : sens, on'yomi et kun'yomi, exemples, et tracé guidé trait par trait (position, forme et sens vérifiés). |
+| **字 Kanji** | 107 kanji tirés des leçons : sens, on'yomi et kun'yomi, exemples, et tracé guidé trait par trait (position, forme et sens vérifiés). |
 | **筆 Feuille** | Calligraphie à main levée sur une feuille quadrillée : pinceau à largeur variable (il s'épaissit quand la main ralentit), modèle en filigrane, ordre des traits animé, impression et export en image. Les huit gestes de 永 en repère. |
 | **辞 Dico** | Tous les mots croisés dans l'app, avec recherche et filtre par domaine, ajout de ses propres mots et révision en cartes. |
 
