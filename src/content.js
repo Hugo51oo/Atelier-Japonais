@@ -445,6 +445,436 @@ const LESSONS = [
     { q:"D'où vient le Gion Matsuri ?", o:["De prières contre une épidémie en 869","D'une victoire militaire","De la fondation de Tōkyō"], a:0 },
   ],
 },
+{
+  id: "l9", theme: "societe", title: "Le travail et l'entreprise", jp: "仕事と会社", r: "shigoto to kaisha",
+  culture: [
+    "L'entrée dans la vie active passe par le <b>shūkatsu</b> : à partir de la troisième année d'université, les étudiants enchaînent réunions d'information et entretiens, tous en costume sombre, pour décrocher un poste qui commencera en avril, à la sortie des études.",
+    "Le contrat n'est pas signé, il est scellé : on appose son <b>hanko</b> (le sceau personnel à son nom) sur les documents officiels — même si la dématérialisation le fait reculer depuis 2020. Le soir, le <b>nomikai</b>, ce verre pris entre collègues, reste le moment où la parole se libère et où la hiérarchie s'allège un peu.",
+    "L'emploi à vie et l'avancement à l'ancienneté, hérités de la haute croissance, se sont effrités : une part importante des salariés travaille aujourd'hui en contrat précaire. Le mot <b>karōshi</b> — la mort par surtravail — a donné lieu depuis 2019 à des plafonds légaux d'heures supplémentaires."
+  ],
+  vocab: [
+    ["shigoto","仕事","しごと","travail"],
+    ["kaisha","会社","かいしゃ","entreprise"],
+    ["kaishain","会社員","かいしゃいん","employé d'entreprise"],
+    ["hataraku","働きます","はたらきます","travailler"],
+    ["hanko","判子","はんこ","sceau personnel"],
+    ["meishi","名刺","めいし","carte de visite"],
+    ["kaigi","会議","かいぎ","réunion"],
+    ["nomikai","飲み会","のみかい","sortie à boire entre collègues"],
+    ["isogashii","忙しい","いそがしい","occupé, chargé"],
+    ["machimasu","待ちます","まちます","attendre"],
+    ["ima","今","いま","maintenant"],
+    ["mainichi","毎日","まいにち","tous les jours"],
+  ],
+  kanji: ["仕","事","社","員"],
+  grammar: {
+    title: "~te imasu et ~te kudasai",
+    explain: [
+      "La forme en <b>-te</b> suivie de <b>imasu</b> dit ce qui est en train de se passer : <i>hataraite imasu</i>, je suis en train de travailler. Elle sert aussi pour un état durable : <i>Tōkyō ni sunde imasu</i>, j'habite à Tōkyō.",
+      "La même forme suivie de <b>kudasai</b> devient une demande polie : <i>matte kudasai</i>, attendez s'il vous plaît.",
+      "Rappel des terminaisons : -mi/-bi/-ni → <b>-nde</b>, -ri/-chi/-i → <b>-tte</b>, -ki → <b>-ite</b>, groupe 2 → <b>-te</b>, et les irréguliers <i>shite</i>, <i>kite</i>."
+    ],
+    table: { head: ["Verbe", "En train de", "Demande"], rows: [
+      ["hatarakimasu", "hataraite imasu", "hataraite kudasai"],
+      ["machimasu", "matte imasu", "matte kudasai"],
+      ["nomimasu", "nonde imasu", "nonde kudasai"],
+      ["shimasu", "shite imasu", "shite kudasai"],
+    ]},
+  },
+  sentences: [
+    { r:"Ima, shigoto o shite imasu.", jp:"今、仕事をしています。", fr:"Là, je suis en train de travailler.", t:["Ima","shigoto","o","shite imasu"] },
+    { r:"Chichi wa kaishain desu.", jp:"父は会社員です。", fr:"Mon père est employé d'entreprise.", t:["Chichi","wa","kaishain","desu"] },
+    { r:"Sukoshi matte kudasai.", jp:"少し待ってください。", fr:"Attendez un instant, s'il vous plaît.", t:["Sukoshi","matte kudasai"] },
+    { r:"Kyō wa kaigi ga arimasu.", jp:"今日は会議があります。", fr:"Aujourd'hui, il y a une réunion.", t:["Kyō","wa","kaigi","ga","arimasu"] },
+    { r:"Mainichi hataraite, totemo isogashii desu.", jp:"毎日働いて、とても忙しいです。", fr:"Je travaille tous les jours, je suis très occupé.", t:["Mainichi","hataraite","totemo","isogashii","desu"] },
+  ],
+  conj: [
+    { q:"hatarakimasu → en train de", hint:"« je suis en train de travailler »", a:["hataraite imasu","hataraiteimasu"] },
+    { q:"machimasu → demande polie", hint:"« attendez, s'il vous plaît »", a:["matte kudasai"] },
+    { q:"nomimasu → en train de", hint:"« je suis en train de boire »", a:["nonde imasu"] },
+    { q:"mimasu → demande polie", hint:"« regardez, s'il vous plaît »", a:["mite kudasai"] },
+  ],
+  quiz: [
+    { q:"Qu'est-ce que le shūkatsu ?", o:["La chasse à l'emploi des étudiants","La fête de fin d'année au bureau","Le salaire de départ"], a:0 },
+    { q:"À quoi sert un hanko ?", o:["À valider un document officiel","À ouvrir le bureau","À payer au konbini"], a:0 },
+    { q:"Que désigne le mot karōshi ?", o:["La mort par surtravail","Une prime d'ancienneté","Un congé sabbatique"], a:0 },
+  ],
+},
+{
+  id: "l10", theme: "societe", title: "À table", jp: "和食", r: "washoku",
+  culture: [
+    "Le <b>washoku</b>, la cuisine traditionnelle, est inscrit depuis <b>2013</b> au patrimoine culturel immatériel de l'UNESCO — moins pour ses recettes que pour son rapport aux saisons et au partage. Le repas type s'organise en « une soupe, trois plats » autour d'un bol de riz.",
+    "Sa base est le <b>dashi</b>, bouillon d'algue kombu et de copeaux de bonite. C'est là que se loge l'<b>umami</b>, la cinquième saveur, identifiée en <b>1908</b> par le chimiste Kikunae Ikeda à partir du glutamate de l'algue kombu.",
+    "On dit <b>itadakimasu</b> avant de manger — littéralement « je reçois » — et <b>gochisōsama</b> après, pour remercier de la peine prise. Les baguettes ne se plantent jamais dans le riz : ce geste est réservé aux offrandes aux défunts."
+  ],
+  vocab: [
+    ["gohan","ご飯","ごはん","riz cuit, repas"],
+    ["sakana","魚","さかな","poisson"],
+    ["niku","肉","にく","viande"],
+    ["yasai","野菜","やさい","légume"],
+    ["mizu","水","みず","eau"],
+    ["misoshiru","味噌汁","みそしる","soupe miso"],
+    ["oishii","おいしい","おいしい","bon, délicieux"],
+    ["itadakimasu","いただきます","いただきます","formule avant le repas"],
+    ["hitotsu","一つ","ひとつ","un (objet)"],
+    ["kudasai","ください","ください","s'il vous plaît, donnez-moi"],
+    ["ikura","いくら","いくら","combien (prix)"],
+  ],
+  kanji: ["米","魚","肉","飲"],
+  grammar: {
+    title: "Compter en japonais",
+    explain: [
+      "Un nombre ne se met jamais seul devant un nom : il faut un <b>classificateur</b> qui dit de quel genre de chose on parle. Le plus général est la série <b>hitotsu, futatsu, mittsu…</b>, qui sert pour presque tout objet jusqu'à dix.",
+      "Les principaux : <b>-nin</b> pour les personnes (hitori, futari, san-nin), <b>-hon</b> pour les objets longs (bouteilles, parapluies), <b>-mai</b> pour les objets plats (feuilles, billets), <b>-hai</b> pour les verres et les bols.",
+      "Pour commander : <b>nom + o + quantité + kudasai</b>. <i>Bīru o futatsu kudasai</i> — deux bières, s'il vous plaît."
+    ],
+    table: { head: ["Ce qu'on compte", "1", "2"], rows: [
+      ["objets en général", "hitotsu 一つ", "futatsu 二つ"],
+      ["personnes", "hitori 一人", "futari 二人"],
+      ["objets longs", "ippon 一本", "nihon 二本"],
+      ["verres, bols", "ippai 一杯", "nihai 二杯"],
+    ]},
+  },
+  sentences: [
+    { r:"Sushi o futatsu kudasai.", jp:"寿司を二つください。", fr:"Deux sushis, s'il vous plaît.", t:["Sushi","o","futatsu","kudasai"] },
+    { r:"Kono misoshiru wa oishii desu.", jp:"この味噌汁はおいしいです。", fr:"Cette soupe miso est délicieuse.", t:["Kono","misoshiru","wa","oishii","desu"] },
+    { r:"Watashi wa niku o tabemasen.", jp:"私は肉を食べません。", fr:"Je ne mange pas de viande.", t:["Watashi","wa","niku","o","tabemasen"] },
+    { r:"Mizu o ippai onegaishimasu.", jp:"水を一杯お願いします。", fr:"Un verre d'eau, s'il vous plaît.", t:["Mizu","o","ippai","onegaishimasu"] },
+    { r:"Kore wa ikura desu ka.", jp:"これはいくらですか。", fr:"Combien coûte ceci ?", t:["Kore","wa","ikura","desu","ka"] },
+  ],
+  conj: [
+    { q:"« deux (objets) » en japonais", hint:"série hitotsu, futatsu…", a:["futatsu"] },
+    { q:"« deux personnes »", hint:"compteur -nin, forme irrégulière", a:["futari"] },
+    { q:"Bīru o mittsu ___.", hint:"« s'il vous plaît » à la commande", a:["kudasai"] },
+    { q:"« trois (objets) »", hint:"après futatsu", a:["mittsu"] },
+  ],
+  quiz: [
+    { q:"En quelle année le washoku entre-t-il au patrimoine de l'UNESCO ?", o:["2013","1998","2020"], a:0 },
+    { q:"Qui a identifié l'umami ?", o:["Kikunae Ikeda, en 1908","Sen no Rikyū, au XVIe siècle","Katsushika Hokusai"], a:0 },
+    { q:"Pourquoi ne plante-t-on pas ses baguettes dans le riz ?", o:["C'est le geste des offrandes aux défunts","Cela abîme le riz","C'est réservé aux enfants"], a:0 },
+  ],
+},
+{
+  id: "l11", theme: "arts", title: "Le cinéma et l'animation", jp: "映画とアニメ", r: "eiga to anime",
+  culture: [
+    "En <b>1951</b>, <i>Rashōmon</i> d'<b>Akira Kurosawa</b> remporte le Lion d'or à Venise et fait découvrir le cinéma japonais à l'Occident. Yasujirō Ozu, avec <i>Voyage à Tokyo</i> (1953), filme au contraire l'ordinaire d'une famille, caméra posée à hauteur de tatami.",
+    "Le <b>studio Ghibli</b> est fondé en <b>1985</b> par Hayao Miyazaki, Isao Takahata et Toshio Suzuki. <i>Le Voyage de Chihiro</i> reçoit l'Ours d'or à Berlin en 2002, puis l'Oscar du meilleur film d'animation en 2003.",
+    "L'<b>anime</b> irrigue aujourd'hui toute la culture populaire mondiale, et le <b>manga</b> représente une part majoritaire de l'édition japonaise. Beaucoup de séries paraissent d'abord dans des hebdomadaires épais, imprimés sur papier recyclé, lus puis laissés dans le train."
+  ],
+  vocab: [
+    ["eiga","映画","えいが","film"],
+    ["anime","アニメ","アニメ","dessin animé"],
+    ["kantoku","監督","かんとく","réalisateur"],
+    ["monogatari","物語","ものがたり","récit, histoire"],
+    ["omoshiroi","面白い","おもしろい","intéressant, drôle"],
+    ["kanashii","悲しい","かなしい","triste"],
+    ["yūmei","有名","ゆうめい","célèbre"],
+    ["ichiban","一番","いちばん","le plus, numéro un"],
+    ["yori","より","より","que (dans la comparaison)"],
+    ["hō","方","ほう","côté, celui-ci (comparaison)"],
+  ],
+  kanji: ["映","画","見","語"],
+  grammar: {
+    title: "Comparer : yori, no hō ga, ichiban",
+    explain: [
+      "« A est plus … que B » se dit <b>A wa B yori … desu</b> : <i>Eiga wa hon yori omoshiroi desu</i>, le film est plus intéressant que le livre.",
+      "Pour répondre à une question de préférence, on emploie <b>no hō ga</b> : <i>Anime no hō ga suki desu</i>, je préfère l'animation.",
+      "Le superlatif est <b>ichiban</b>, placé devant l'adjectif : <i>Kono eiga ga ichiban yūmei desu</i>, ce film est le plus célèbre. Dans un groupe : <i>… no naka de ichiban …</i>"
+    ],
+    table: { head: ["Structure", "Exemple", "Sens"], rows: [
+      ["A wa B yori …", "eiga wa hon yori nagai", "le film est plus long que le livre"],
+      ["A no hō ga …", "anime no hō ga suki", "je préfère l'animation"],
+      ["ichiban …", "ichiban yūmei na kantoku", "le réalisateur le plus célèbre"],
+      ["… no naka de", "nihon no eiga no naka de", "parmi les films japonais"],
+    ]},
+  },
+  sentences: [
+    { r:"Kono eiga wa ano eiga yori omoshiroi desu.", jp:"この映画はあの映画より面白いです。", fr:"Ce film est plus intéressant que celui-là.", t:["Kono","eiga","wa","ano","eiga","yori","omoshiroi","desu"] },
+    { r:"Anime no hō ga suki desu.", jp:"アニメの方が好きです。", fr:"Je préfère l'animation.", t:["Anime","no hō ga","suki","desu"] },
+    { r:"Kurosawa wa ichiban yūmei na kantoku desu.", jp:"黒澤は一番有名な監督です。", fr:"Kurosawa est le réalisateur le plus célèbre.", t:["Kurosawa","wa","ichiban","yūmei na","kantoku","desu"], say:"くろさわはいちばんゆうめいなかんとくです。" },
+    { r:"Kono monogatari wa sukoshi kanashii desu.", jp:"この物語は少し悲しいです。", fr:"Cette histoire est un peu triste.", t:["Kono","monogatari","wa","sukoshi","kanashii","desu"] },
+    { r:"Nihon no eiga o mitai desu.", jp:"日本の映画を見たいです。", fr:"Je veux voir des films japonais.", t:["Nihon","no","eiga","o","mitai desu"] },
+  ],
+  conj: [
+    { q:"Eiga wa hon ___ omoshiroi desu.", hint:"« plus … que »", a:["yori"] },
+    { q:"Anime ___ suki desu.", hint:"« je préfère » (deux mots)", a:["no hō ga","no hou ga","no ho ga"] },
+    { q:"Kono eiga ga ___ yūmei desu.", hint:"le superlatif", a:["ichiban"] },
+    { q:"omoshiroi → négatif", hint:"adjectif en -i", a:["omoshirokunai desu","omoshirokunai"] },
+  ],
+  quiz: [
+    { q:"Quel film a valu à Kurosawa le Lion d'or en 1951 ?", o:["Rashōmon","Voyage à Tokyo","Le Voyage de Chihiro"], a:0 },
+    { q:"En quelle année le studio Ghibli est-il fondé ?", o:["1985","1963","2001"], a:0 },
+    { q:"Comment Ozu filme-t-il ses scènes de famille ?", o:["Caméra posée à hauteur de tatami","Caméra à l'épaule","En plans aériens"], a:0 },
+  ],
+},
+{
+  id: "l12", theme: "societe", title: "Kami et bouddhas", jp: "神様と仏様", r: "kamisama to hotokesama",
+  culture: [
+    "Le <b>shintō</b> — « la voie des kami » — n'a ni fondateur ni texte sacré unique. Il honore les <b>kami</b>, présences qui habitent une montagne, une cascade, un arbre ou un ancêtre ; la formule consacrée en compte <i>yaoyorozu</i>, « huit millions », c'est-à-dire une infinité.",
+    "Le <b>bouddhisme</b> arrive de Chine et de Corée au milieu du <b>VIe siècle</b>. Les deux traditions ne se sont pas remplacées : on se marie souvent au sanctuaire et on est enterré au temple. Le Japon compte environ 80 000 sanctuaires et autant de temples.",
+    "Au sanctuaire, on se rince les mains et la bouche à la fontaine, on jette une pièce, on s'incline deux fois, on frappe deux fois dans ses mains, on prie, on s'incline une dernière fois. Le <b>torii</b> rouge marque le passage du monde ordinaire à l'espace sacré ; l'<b>omikuji</b>, le petit oracle tiré au sort, s'attache à une branche s'il annonce le malheur."
+  ],
+  vocab: [
+    ["kami","神","かみ","divinité, kami"],
+    ["jinja","神社","じんじゃ","sanctuaire shintō"],
+    ["otera","お寺","おてら","temple bouddhique"],
+    ["torii","鳥居","とりい","portail du sanctuaire"],
+    ["omikuji","おみくじ","おみくじ","oracle tiré au sort"],
+    ["inorimasu","祈ります","いのります","prier"],
+    ["shinjimasu","信じます","しんじます","croire"],
+    ["shizen","自然","しぜん","nature"],
+    ["dekimasu","できます","できます","pouvoir, savoir faire"],
+    ["shōgatsu","正月","しょうがつ","Nouvel An"],
+  ],
+  kanji: ["神","祈","寺","心"],
+  grammar: {
+    title: "Pouvoir : dekimasu et ~koto ga dekimasu",
+    explain: [
+      "<b>dekimasu</b> seul signifie « savoir faire, être possible » : <i>Nihongo ga dekimasu</i>, je sais le japonais. Ce qu'on sait faire est marqué par <b>ga</b>.",
+      "Avec un verbe, on emploie la <b>forme du dictionnaire</b> (la forme neutre : <i>nomu, taberu, miru, suru, kuru</i>) suivie de <b>koto ga dekimasu</b> : <i>kanji o kaku koto ga dekimasu</i>, je sais écrire les kanji.",
+      "La forme du dictionnaire se retrouve en retirant <b>-masu</b> : -imasu → -u (nomimasu → nomu), groupe 2 → -ru (tabemasu → taberu). Irréguliers : shimasu → suru, kimasu → kuru."
+    ],
+    table: { head: ["Poli", "Dictionnaire", "Pouvoir"], rows: [
+      ["nomimasu", "nomu", "nomu koto ga dekimasu"],
+      ["tabemasu", "taberu", "taberu koto ga dekimasu"],
+      ["ikimasu", "iku", "iku koto ga dekimasu"],
+      ["shimasu", "suru", "suru koto ga dekimasu"],
+    ]},
+  },
+  sentences: [
+    { r:"Jinja de omikuji o hikimasu.", jp:"神社でおみくじを引きます。", fr:"Au sanctuaire, on tire un omikuji.", t:["Jinja","de","omikuji","o","hikimasu"] },
+    { r:"Nihongo ga sukoshi dekimasu.", jp:"日本語が少しできます。", fr:"Je sais un peu le japonais.", t:["Nihongo","ga","sukoshi","dekimasu"] },
+    { r:"Kanji o kaku koto ga dekimasu.", jp:"漢字を書くことができます。", fr:"Je sais écrire les kanji.", t:["Kanji","o","kaku","koto ga dekimasu"] },
+    { r:"Shōgatsu ni jinja ni ikimasu.", jp:"正月に神社に行きます。", fr:"Au Nouvel An, on va au sanctuaire.", t:["Shōgatsu","ni","jinja","ni","ikimasu"] },
+    { r:"Nihon-jin wa shizen no kami o shinjimasu.", jp:"日本人は自然の神を信じます。", fr:"Les Japonais croient aux kami de la nature.", t:["Nihon-jin","wa","shizen","no","kami","o","shinjimasu"] },
+  ],
+  conj: [
+    { q:"tabemasu → forme du dictionnaire", hint:"groupe 2", a:["taberu"] },
+    { q:"nomimasu → forme du dictionnaire", hint:"-imasu → -u", a:["nomu"] },
+    { q:"shimasu → forme du dictionnaire", hint:"irrégulier", a:["suru"] },
+    { q:"Nihongo ___ dekimasu.", hint:"particule de ce qu'on sait faire", a:["ga"] },
+  ],
+  quiz: [
+    { q:"Que veut dire « yaoyorozu no kami » ?", o:["Huit millions de kami, c'est-à-dire une infinité","Les huit kami principaux","Les kami de la montagne"], a:0 },
+    { q:"Quand le bouddhisme arrive-t-il au Japon ?", o:["Au milieu du VIe siècle","En 1868","Au XIIe siècle"], a:0 },
+    { q:"Que fait-on d'un omikuji défavorable ?", o:["On l'attache à une branche","On le garde dans son portefeuille","On le brûle chez soi"], a:0 },
+  ],
+},
+{
+  id: "l13", theme: "societe", title: "L'école", jp: "学校", r: "gakkō",
+  culture: [
+    "L'année scolaire commence en <b>avril</b>, sous les cerisiers, et se termine en mars. Le cursus suit le rythme <b>6-3-3</b> : six ans de primaire, trois de collège, trois de lycée — les neuf premières années étant obligatoires.",
+    "Il n'y a presque pas de personnel de ménage : chaque jour, les élèves font le <b>sōji</b>, le nettoyage de leur salle et des couloirs. Après les cours viennent les <b>bukatsu</b>, les clubs sportifs ou culturels, souvent quotidiens, et pour beaucoup le <b>juku</b>, l'école du soir qui prépare les concours d'entrée.",
+    "Le <b>senpai</b> (l'aîné) et le <b>kōhai</b> (le cadet) structurent toute la vie de groupe, du club de baseball au bureau. C'est à l'école que s'apprennent ces places."
+  ],
+  vocab: [
+    ["gakkō","学校","がっこう","école"],
+    ["kyōshitsu","教室","きょうしつ","salle de classe"],
+    ["jugyō","授業","じゅぎょう","cours"],
+    ["shukudai","宿題","しゅくだい","devoirs"],
+    ["seito","生徒","せいと","élève"],
+    ["senpai","先輩","せんぱい","aîné, ancien"],
+    ["yomimasu","読みます","よみます","lire"],
+    ["kakimasu","書きます","かきます","écrire"],
+    ["oboemasu","覚えます","おぼえます","apprendre par cœur"],
+    ["muzukashii","難しい","むずかしい","difficile"],
+    ["yasashii","やさしい","やさしい","facile, doux"],
+  ],
+  kanji: ["校","教","室","読"],
+  grammar: {
+    title: "Devoir et avoir le droit",
+    explain: [
+      "L'obligation se construit sur la <b>forme négative neutre</b> : on remplace <b>-masen</b> par <b>-nakereba narimasen</b>. <i>Shukudai o shinakereba narimasen</i> — je dois faire mes devoirs. À l'oral, on entend souvent la version courte <i>-nakya</i>.",
+      "La permission emploie la forme en <b>-te</b> suivie de <b>mo ii desu</b> : <i>Kaette mo ii desu ka</i> — puis-je rentrer ?",
+      "L'interdiction en est le miroir : <b>-te wa ikemasen</b>. <i>Koko de tabete wa ikemasen</i> — on ne mange pas ici."
+    ],
+    table: { head: ["Verbe", "Je dois", "J'ai le droit"], rows: [
+      ["shimasu", "shinakereba narimasen", "shite mo ii desu"],
+      ["ikimasu", "ikanakereba narimasen", "itte mo ii desu"],
+      ["yomimasu", "yomanakereba narimasen", "yonde mo ii desu"],
+      ["tabemasu", "tabenakereba narimasen", "tabete mo ii desu"],
+    ]},
+  },
+  sentences: [
+    { r:"Maiasa, gakkō ni ikanakereba narimasen.", jp:"毎朝、学校に行かなければなりません。", fr:"Chaque matin, je dois aller à l'école.", t:["Maiasa","gakkō","ni","ikanakereba narimasen"] },
+    { r:"Kyōshitsu de shukudai o shite mo ii desu ka.", jp:"教室で宿題をしてもいいですか。", fr:"Puis-je faire mes devoirs dans la salle ?", t:["Kyōshitsu","de","shukudai","o","shite mo ii desu","ka"] },
+    { r:"Kanji wa muzukashii desu ga, omoshiroi desu.", jp:"漢字は難しいですが、面白いです。", fr:"Les kanji sont difficiles, mais intéressants.", t:["Kanji","wa","muzukashii desu","ga","omoshiroi desu"] },
+    { r:"Seito wa mainichi sōji o shimasu.", jp:"生徒は毎日掃除をします。", fr:"Les élèves font le ménage tous les jours.", t:["Seito","wa","mainichi","sōji","o","shimasu"] },
+    { r:"Hon o yonde mo ii desu.", jp:"本を読んでもいいです。", fr:"Tu peux lire le livre.", t:["Hon","o","yonde mo ii desu"] },
+  ],
+  conj: [
+    { q:"shimasu → je dois", hint:"obligation polie", a:["shinakereba narimasen"] },
+    { q:"ikimasu → j'ai le droit", hint:"permission", a:["itte mo ii desu","ittemo ii desu"] },
+    { q:"tabemasu → interdiction", hint:"« on ne mange pas »", a:["tabete wa ikemasen"] },
+    { q:"yomimasu → je dois", hint:"obligation polie", a:["yomanakereba narimasen"] },
+  ],
+  quiz: [
+    { q:"Quand commence l'année scolaire ?", o:["En avril","En septembre","En janvier"], a:0 },
+    { q:"Qui nettoie les salles de classe ?", o:["Les élèves eux-mêmes","Une société de ménage","Les professeurs"], a:0 },
+    { q:"Qu'est-ce qu'un juku ?", o:["Une école du soir pour préparer les concours","Un club de sport","Un voyage scolaire"], a:0 },
+  ],
+},
+{
+  id: "l14", theme: "politique", title: "L'économie", jp: "経済", r: "keizai",
+  culture: [
+    "De 1955 à 1973, le Japon connaît une croissance à deux chiffres : c'est le « miracle économique ». Les usines inventent le <b>kaizen</b>, l'amélioration continue par petits pas, et le <i>juste-à-temps</i> de Toyota, méthodes aujourd'hui enseignées partout.",
+    "À la fin des années 1980, la spéculation sur les terrains et les actions gonfle une <b>bulle</b> démesurée — on a pu dire que le seul parc du palais impérial valait autant que toute la Californie. Elle éclate en <b>1991</b> et ouvre deux décennies de croissance faible.",
+    "Le défi actuel est démographique : la population diminue depuis le début des années 2010 et près de <b>30 %</b> des habitants ont plus de 65 ans. D'où les robots de service, l'automatisation des caisses, et un débat permanent sur l'immigration de travail."
+  ],
+  vocab: [
+    ["keizai","経済","けいざい","économie"],
+    ["kaisha","会社","かいしゃ","entreprise"],
+    ["okane","お金","おかね","argent"],
+    ["kaimasu","買います","かいます","acheter"],
+    ["urimasu","売ります","うります","vendre"],
+    ["nedan","値段","ねだん","prix"],
+    ["takai","高い","たかい","cher"],
+    ["yasui","安い","やすい","bon marché"],
+    ["kōjō","工場","こうじょう","usine"],
+    ["kara","から","から","parce que, depuis"],
+    ["node","ので","ので","comme, étant donné que"],
+  ],
+  kanji: ["買","売","安","高"],
+  grammar: {
+    title: "Dire la cause : kara, node, ga",
+    explain: [
+      "<b>kara</b> se place après la proposition qui donne la raison : <i>Takai desu kara, kaimasen</i> — c'est cher, donc je n'achète pas. L'ordre est l'inverse du français : la cause d'abord, la conséquence ensuite.",
+      "<b>node</b> a le même rôle, en plus doux et plus poli : on l'emploie pour s'excuser ou expliquer sans insister. Après un nom ou un adjectif en -na, il devient <b>na node</b>.",
+      "<b>ga</b> en fin de proposition marque l'opposition : <i>Yasui desu ga, warui desu</i> — c'est bon marché, mais c'est mauvais."
+    ],
+    table: { head: ["Lien", "Exemple", "Sens"], rows: [
+      ["… kara", "takai desu kara", "parce que c'est cher"],
+      ["… node", "takai node", "comme c'est cher"],
+      ["nom + na node", "byōki na node", "comme je suis malade"],
+      ["… ga", "takai desu ga", "c'est cher, mais…"],
+    ]},
+  },
+  sentences: [
+    { r:"Takai desu kara, kaimasen.", jp:"高いですから、買いません。", fr:"C'est cher, donc je n'achète pas.", t:["Takai desu","kara","kaimasen"] },
+    { r:"Yasui node, futatsu kaimashita.", jp:"安いので、二つ買いました。", fr:"Comme c'était bon marché, j'en ai acheté deux.", t:["Yasui","node","futatsu","kaimashita"] },
+    { r:"Kono kaisha wa kuruma o tsukutte imasu.", jp:"この会社は車を作っています。", fr:"Cette entreprise fabrique des voitures.", t:["Kono","kaisha","wa","kuruma","o","tsukutte imasu"] },
+    { r:"Nedan wa takai desu ga, ii desu.", jp:"値段は高いですが、いいです。", fr:"Le prix est élevé, mais c'est bien.", t:["Nedan","wa","takai desu","ga","ii desu"] },
+    { r:"Nihon no keizai wa kawarimashita.", jp:"日本の経済は変わりました。", fr:"L'économie japonaise a changé.", t:["Nihon","no","keizai","wa","kawarimashita"] },
+  ],
+  conj: [
+    { q:"Takai desu ___, kaimasen.", hint:"« parce que »", a:["kara"] },
+    { q:"Yasui ___, kaimashita.", hint:"« comme », plus doux", a:["node"] },
+    { q:"Takai desu ___, ii desu.", hint:"« mais »", a:["ga"] },
+    { q:"kaimasu → passé", hint:"« j'ai acheté »", a:["kaimashita"] },
+  ],
+  quiz: [
+    { q:"Que désigne le kaizen ?", o:["L'amélioration continue par petits pas","Le salaire à l'ancienneté","La bulle spéculative"], a:0 },
+    { q:"Quand la bulle éclate-t-elle ?", o:["En 1991","En 1973","En 2008"], a:0 },
+    { q:"Quel est le grand défi actuel ?", o:["Le vieillissement et la baisse de la population","Le manque de terres agricoles","L'absence d'industrie"], a:0 },
+  ],
+},
+{
+  id: "l15", theme: "histoire", title: "Le shinkansen", jp: "新幹線", r: "shinkansen",
+  culture: [
+    "Le <b>1er octobre 1964</b>, neuf jours avant l'ouverture des Jeux olympiques de Tōkyō, le premier shinkansen relie Tōkyō à Ōsaka. Le pays, détruit vingt ans plus tôt, montre au monde un train qui roule à 210 km/h sur une voie entièrement neuve.",
+    "Le réseau dépasse aujourd'hui les 3 000 kilomètres et atteint <b>320 km/h</b> sur la ligne du Tōhoku. Le retard moyen se compte en secondes, et aucun accident mortel de passager n'est survenu par déraillement ou collision sur ces lignes depuis l'ouverture.",
+    "À la gare, on achète un <b>ekiben</b> — le bento propre à chaque ville — et on s'aligne sur les marques peintes au sol : les portes s'arrêteront exactement là. Les sièges pivotent à chaque terminus pour faire face à la marche."
+  ],
+  vocab: [
+    ["densha","電車","でんしゃ","train"],
+    ["eki","駅","えき","gare"],
+    ["kippu","切符","きっぷ","billet"],
+    ["michi","道","みち","route, chemin"],
+    ["norimasu","乗ります","のります","monter dans"],
+    ["orimasu","降ります","おります","descendre de"],
+    ["hayai","速い","はやい","rapide"],
+    ["osoi","遅い","おそい","lent, tardif"],
+    ["ekiben","駅弁","えきべん","bento de gare"],
+    ["koto ga arimasu","ことがあります","ことがあります","il m'est arrivé de"],
+  ],
+  kanji: ["駅","電","車","道"],
+  grammar: {
+    title: "L'expérience : ~ta koto ga arimasu",
+    explain: [
+      "Pour dire « j'ai déjà fait », on prend la <b>forme neutre passée</b> (la forme en -ta) et on ajoute <b>koto ga arimasu</b> : <i>Shinkansen ni notta koto ga arimasu</i> — j'ai déjà pris le shinkansen.",
+      "La forme en -ta s'obtient à partir de la forme en -te : <i>notte → notta</i>, <i>tabete → tabeta</i>, <i>itte → itta</i>, <i>shite → shita</i>.",
+      "<b>~te kara</b> enchaîne deux actions dans le temps : <i>Kippu o katte kara, densha ni norimasu</i> — après avoir acheté le billet, je monte dans le train."
+    ],
+    table: { head: ["Forme -te", "Forme -ta", "Expérience"], rows: [
+      ["notte", "notta", "notta koto ga arimasu"],
+      ["tabete", "tabeta", "tabeta koto ga arimasu"],
+      ["itte", "itta", "itta koto ga arimasu"],
+      ["mite", "mita", "mita koto ga arimasu"],
+    ]},
+  },
+  sentences: [
+    { r:"Shinkansen ni notta koto ga arimasu ka.", jp:"新幹線に乗ったことがありますか。", fr:"As-tu déjà pris le shinkansen ?", t:["Shinkansen","ni","notta","koto ga arimasu","ka"] },
+    { r:"Kippu o katte kara, eki ni ikimasu.", jp:"切符を買ってから、駅に行きます。", fr:"Après avoir acheté le billet, je vais à la gare.", t:["Kippu","o","katte kara","eki","ni","ikimasu"] },
+    { r:"Kono densha wa totemo hayai desu.", jp:"この電車はとても速いです。", fr:"Ce train est très rapide.", t:["Kono","densha","wa","totemo","hayai","desu"] },
+    { r:"Ekiben o tabeta koto ga arimasen.", jp:"駅弁を食べたことがありません。", fr:"Je n'ai jamais mangé d'ekiben.", t:["Ekiben","o","tabeta","koto ga arimasen"] },
+    { r:"Tsugi no eki de orimasu.", jp:"次の駅で降ります。", fr:"Je descends à la prochaine gare.", t:["Tsugi","no","eki","de","orimasu"] },
+  ],
+  conj: [
+    { q:"norimasu → forme en -ta", hint:"à partir de notte", a:["notta"] },
+    { q:"tabemasu → forme en -ta", hint:"groupe 2", a:["tabeta"] },
+    { q:"ikimasu → « j'y suis déjà allé »", hint:"forme -ta + koto ga arimasu", a:["itta koto ga arimasu"] },
+    { q:"shimasu → forme en -ta", hint:"irrégulier", a:["shita"] },
+  ],
+  quiz: [
+    { q:"Quand le premier shinkansen circule-t-il ?", o:["Le 1er octobre 1964","En 1945","En 1988"], a:0 },
+    { q:"Quelle vitesse atteint-il aujourd'hui au maximum ?", o:["320 km/h","210 km/h","500 km/h"], a:0 },
+    { q:"Qu'est-ce qu'un ekiben ?", o:["Le bento vendu dans une gare","Un abonnement de train","Le quai réservé au shinkansen"], a:0 },
+  ],
+},
+{
+  id: "l16", theme: "societe", title: "Le bain", jp: "お風呂と温泉", r: "ofuro to onsen",
+  culture: [
+    "Sur un archipel volcanique, l'eau chaude sort du sol : le Japon compte plus de <b>27 000</b> sources thermales et quelque 3 000 stations d'<b>onsen</b>. La loi de 1948 en donne une définition précise — au moins 25 °C à la source, ou une teneur suffisante en certains minéraux.",
+    "Le bain n'est pas un moment de toilette mais de délassement : on se lave assis, à l'extérieur du bassin, on se rince entièrement, puis on entre dans l'eau très chaude. L'eau du <b>furo</b> familial se garde d'ailleurs pour toute la maisonnée, dans l'ordre des âges.",
+    "Les <b>sentō</b>, bains publics de quartier, se raréfient depuis que chaque logement a sa salle de bains, mais gardent leur fresque du mont Fuji au-dessus des bassins. Dans certains établissements, les tatouages restent mal vus — usage hérité de leur association avec la pègre."
+  ],
+  vocab: [
+    ["ofuro","お風呂","おふろ","bain"],
+    ["onsen","温泉","おんせん","source chaude"],
+    ["sentō","銭湯","せんとう","bain public"],
+    ["oyu","お湯","おゆ","eau chaude"],
+    ["karada","体","からだ","corps"],
+    ["atsui","熱い","あつい","chaud (au toucher)"],
+    ["kimochii","気持ちいい","きもちいい","agréable"],
+    ["hairimasu","入ります","はいります","entrer"],
+    ["araimasu","洗います","あらいます","laver"],
+    ["omoimasu","思います","おもいます","penser"],
+    ["tabun","たぶん","たぶん","sans doute"],
+  ],
+  kanji: ["体","湯","気","水"],
+  grammar: {
+    title: "Donner son avis : ~to omoimasu",
+    explain: [
+      "Pour dire ce qu'on pense, on met la phrase à la <b>forme neutre</b> puis on ajoute <b>to omoimasu</b> : <i>Onsen wa ii to omoimasu</i> — je pense que les onsen, c'est bien.",
+      "Devant <b>to</b>, <i>desu</i> devient <b>da</b> : <i>kirei da to omoimasu</i>. Avec un adjectif en -i, rien ne change : <i>atsui to omoimasu</i>.",
+      "La forme neutre des verbes est la forme du dictionnaire ; au négatif, <b>-nai</b> : <i>ikanai to omoimasu</i> — je pense qu'il n'ira pas."
+    ],
+    table: { head: ["Phrase", "Forme neutre", "Avec to omoimasu"], rows: [
+      ["ii desu", "ii", "ii to omoimasu"],
+      ["kirei desu", "kirei da", "kirei da to omoimasu"],
+      ["ikimasu", "iku", "iku to omoimasu"],
+      ["ikimasen", "ikanai", "ikanai to omoimasu"],
+    ]},
+  },
+  sentences: [
+    { r:"Onsen wa kimochii to omoimasu.", jp:"温泉は気持ちいいと思います。", fr:"Je trouve les onsen très agréables.", t:["Onsen","wa","kimochii","to omoimasu"] },
+    { r:"Karada o aratte kara, ofuro ni hairimasu.", jp:"体を洗ってから、お風呂に入ります。", fr:"On se lave, puis on entre dans le bain.", t:["Karada","o","aratte kara","ofuro","ni","hairimasu"] },
+    { r:"Kono oyu wa atsui desu ne.", jp:"このお湯は熱いですね。", fr:"Cette eau est chaude, n'est-ce pas ?", t:["Kono","oyu","wa","atsui desu","ne"] },
+    { r:"Tabun ashita wa ame da to omoimasu.", jp:"たぶん明日は雨だと思います。", fr:"Je pense qu'il pleuvra sans doute demain.", t:["Tabun","ashita","wa","ame da","to omoimasu"] },
+    { r:"Sentō ni itta koto ga arimasu.", jp:"銭湯に行ったことがあります。", fr:"Je suis déjà allé dans un bain public.", t:["Sentō","ni","itta","koto ga arimasu"] },
+  ],
+  conj: [
+    { q:"ii desu → « je pense que c'est bien »", hint:"forme neutre + to omoimasu", a:["ii to omoimasu"] },
+    { q:"kirei desu → forme neutre", hint:"desu devient…", a:["kirei da"] },
+    { q:"ikimasen → forme neutre négative", hint:"-masen → -nai", a:["ikanai"] },
+    { q:"Karada o ___ kara, hairimasu.", hint:"« après avoir lavé » (araimasu)", a:["aratte"] },
+  ],
+  quiz: [
+    { q:"Que dit la loi sur ce qu'est un onsen ?", o:["Au moins 25 °C à la source, ou assez de minéraux","Qu'il doit être en plein air","Qu'il doit être naturel et gratuit"], a:0 },
+    { q:"Où se lave-t-on ?", o:["Assis, à l'extérieur du bassin","Dans le bassin","Sous la douche après le bain"], a:0 },
+    { q:"Qu'est-ce qu'un sentō ?", o:["Un bain public de quartier","Une source volcanique","Une auberge traditionnelle"], a:0 },
+  ],
+},
 ];
 
 // ─── Katakana ──────────────────────────────────────────────────────
@@ -530,6 +960,34 @@ const KANJI = [
   ["祭","fête","SAI","matsu(ri)",[["matsuri","祭り","まつり","fête, festival"]]],
   ["店","boutique","TEN","mise",[["mise","店","みせ","magasin"],["ten'in","店員","てんいん","vendeur, vendeuse"]]],
   ["心","cœur, esprit","SHIN","kokoro",[["kokoro","心","こころ","cœur, esprit"]]],
+  ["仕","servir, faire","SHI","tsuka(eru)",[["shigoto","仕事","しごと","travail"]]],
+  ["事","chose, affaire","JI","koto",[["shigoto","仕事","しごと","travail"],["daiji","大事","だいじ","important"]]],
+  ["社","société, sanctuaire","SHA","yashiro",[["kaisha","会社","かいしゃ","entreprise"],["jinja","神社","じんじゃ","sanctuaire"]]],
+  ["員","membre","IN","—",[["kaishain","会社員","かいしゃいん","employé d'entreprise"],["ten'in","店員","てんいん","vendeur"]]],
+  ["米","riz, Amérique","BEI, MAI","kome",[["kome","米","こめ","riz (cru)"],["Beikoku","米国","べいこく","États-Unis"]]],
+  ["魚","poisson","GYO","sakana, uo",[["sakana","魚","さかな","poisson"],["kingyo","金魚","きんぎょ","poisson rouge"]]],
+  ["肉","viande","NIKU","—",[["niku","肉","にく","viande"],["gyūniku","牛肉","ぎゅうにく","bœuf"]]],
+  ["飲","boire","IN","no(mu)",[["nomimasu","飲みます","のみます","boire"],["nomimono","飲み物","のみもの","boisson"]]],
+  ["映","refléter, projeter","EI","utsu(ru)",[["eiga","映画","えいが","film"]]],
+  ["画","image, trait","GA, KAKU","—",[["eiga","映画","えいが","film"],["manga","漫画","まんが","bande dessinée"]]],
+  ["神","divinité","SHIN, JIN","kami",[["kami","神","かみ","kami, divinité"],["jinja","神社","じんじゃ","sanctuaire"]]],
+  ["祈","prier","KI","ino(ru)",[["inorimasu","祈ります","いのります","prier"]]],
+  ["寺","temple","JI","tera",[["otera","お寺","おてら","temple"],["Kinkaku-ji","金閣寺","きんかくじ","Pavillon d'or"]]],
+  ["校","école","KŌ","—",[["gakkō","学校","がっこう","école"],["kōkō","高校","こうこう","lycée"]]],
+  ["教","enseigner","KYŌ","oshi(eru)",[["kyōshitsu","教室","きょうしつ","salle de classe"],["oshiemasu","教えます","おしえます","enseigner"]]],
+  ["室","pièce, salle","SHITSU","muro",[["kyōshitsu","教室","きょうしつ","salle de classe"],["washitsu","和室","わしつ","pièce à tatami"]]],
+  ["読","lire","DOKU","yo(mu)",[["yomimasu","読みます","よみます","lire"],["dokusho","読書","どくしょ","lecture"]]],
+  ["買","acheter","BAI","ka(u)",[["kaimasu","買います","かいます","acheter"],["kaimono","買い物","かいもの","courses"]]],
+  ["売","vendre","BAI","u(ru)",[["urimasu","売ります","うります","vendre"],["baiten","売店","ばいてん","kiosque"]]],
+  ["安","bon marché, paisible","AN","yasu(i)",[["yasui","安い","やすい","bon marché"],["anzen","安全","あんぜん","sécurité"]]],
+  ["体","corps","TAI","karada",[["karada","体","からだ","corps"],["taiiku","体育","たいいく","éducation physique"]]],
+  ["湯","eau chaude","TŌ","yu",[["oyu","お湯","おゆ","eau chaude"],["yunomi","湯のみ","ゆのみ","tasse à thé"]]],
+  ["駅","gare","EKI","—",[["eki","駅","えき","gare"],["ekiben","駅弁","えきべん","bento de gare"]]],
+  ["電","électricité","DEN","—",[["densha","電車","でんしゃ","train"],["denwa","電話","でんわ","téléphone"]]],
+  ["車","véhicule","SHA","kuruma",[["kuruma","車","くるま","voiture"],["densha","電車","でんしゃ","train"]]],
+  ["道","chemin, voie","DŌ","michi",[["michi","道","みち","chemin"],["sadō","茶道","さどう","voie du thé"]]],
+  ["高","haut, cher","KŌ","taka(i)",[["takai","高い","たかい","cher, haut"],["kōkō","高校","こうこう","lycée"]]],
+  ["気","air, esprit, humeur","KI, KE","—",[["tenki","天気","てんき","météo"],["kimochii","気持ちいい","きもちいい","agréable"]]],
 ];
 
 // ─── Hiragana ──────────────────────────────────────────────────────
